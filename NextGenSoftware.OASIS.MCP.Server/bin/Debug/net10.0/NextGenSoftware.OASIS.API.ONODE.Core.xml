@@ -1,0 +1,2431 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NextGenSoftware.OASIS.API.ONODE.Core</name>
+    </assembly>
+    <members>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType">
+            <summary>
+            Types of interop providers for different languages/frameworks
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.NativePInvoke">
+            <summary>
+            Native C/C++/Rust libraries via P/Invoke
+            Best performance for native code
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Python">
+            <summary>
+            Python libraries via Python.NET
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.JavaScript">
+            <summary>
+            JavaScript/Node.js libraries via ClearScript or Edge.js
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.WebAssembly">
+            <summary>
+            WebAssembly (WASM) modules
+            Cross-platform, many languages compile to WASM
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Java">
+            <summary>
+            Java libraries via JNI or IKVM.NET
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Go">
+            <summary>
+            Go libraries via CGO (C interop)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Rust">
+            <summary>
+            Rust libraries (native or via C interop)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.DotNet">
+            <summary>
+            .NET assemblies (direct)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.RestApi">
+            <summary>
+            REST API wrapper for remote libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Grpc">
+            <summary>
+            gRPC wrapper for remote libraries
+            High performance RPC
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Com">
+            <summary>
+            COM interop (Windows)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.TypeScript">
+            <summary>
+            TypeScript libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Ruby">
+            <summary>
+            Ruby libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Php">
+            <summary>
+            PHP libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.PHP">
+            <summary>
+            PHP libraries (alias)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Lua">
+            <summary>
+            Lua libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Perl">
+            <summary>
+            Perl libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Kotlin">
+            <summary>
+            Kotlin libraries (JVM)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Scala">
+            <summary>
+            Scala libraries (JVM)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Groovy">
+            <summary>
+            Groovy libraries (JVM)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Clojure">
+            <summary>
+            Clojure libraries (JVM)
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Dart">
+            <summary>
+            Dart libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.R">
+            <summary>
+            R libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Julia">
+            <summary>
+            Julia libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.ShellScript">
+            <summary>
+            Shell script libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.PowerShell">
+            <summary>
+            PowerShell libraries
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType.Auto">
+            <summary>
+            Auto-detect based on file extension
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Holons.KarmaWeightingProposal">
+            <summary>
+            Karma weighting proposal that extends the generic Proposal holon
+            Used for voting on karma weightings
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.KarmaWeightingProposal.GetKarmaTypeString">
+            <summary>
+            Gets the karma type string for the proposal category
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Proposal">
+            <summary>
+            Generic Proposal holon that can be reused for various voting scenarios
+            (e.g., Simulation proposals, Karma weighting votes, etc.)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Proposal.HasUserVoted(System.Guid)">
+            <summary>
+            Checks if a user has already voted on this proposal
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Proposal.GetUserVote(System.Guid)">
+            <summary>
+            Gets a user's vote (if they voted)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Proposal.AddVote(System.Guid,System.Boolean)">
+            <summary>
+            Adds a vote (checks if user already voted)
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Holons.SimulationProposal">
+            <summary>
+            Simulation-specific proposal that extends the generic Proposal holon
+            Used for The Grand Simulation proposals
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.SimulationProposal.ProposedHolon">
+            <summary>
+            The actual holon being proposed (loaded separately if needed)
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Game">
+            <summary>
+            Represents a game in the STARNET system
+            Games can be created, published, downloaded, and installed like other STARNET holons
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.AudioData">
+            <summary>When <see cref="T:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType"/> is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Audio"/>: binary audio on the holon; takes precedence over <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.AudioUrl"/> when non-empty.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.AudioUrl">
+            <summary>When <see cref="T:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType"/> is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Audio"/>: URL to audio when <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.AudioData"/> is null or empty.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.VideoData">
+            <summary>When <see cref="T:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType"/> is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Video"/>: binary video on the holon; takes precedence over <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.VideoUrl"/> when non-empty.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.VideoUrl">
+            <summary>When <see cref="T:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType"/> is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Video"/>: URL to video when <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.VideoData"/> is null or empty.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.TextContent">
+            <summary>When <see cref="T:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType"/> is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Text"/>: body text to display (UI may also use Name/Description).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.GeoHotSpot.WebsiteUrl">
+            <summary>When <see cref="T:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType"/> is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.WebsiteLink"/>: URL to open in browser or in-app web view.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective">
+            <summary>
+            An objective belonging to a Quest. Requirement and progress are keyed by game id (e.g. ODOOM, OQUAKE).
+            Title/Description are authored text. ProgressSummary is always computed from requirement + progress dictionaries.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.ProgressPercent">
+            <summary>Completion percentage 0–100 from requirement vs progress dictionaries. Updated when progress is applied.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.LinkedGeoHotSpotId">
+            <summary>Optional GeoHotSpot to associate with this objective (visit or trigger).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.ExternalHandoffUri">
+            <summary>Optional URI for cross-app handoff (next step outside current game).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.ProgressSummary">
+            <summary>Computed progress text from Need* + progress dictionaries.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.BuildProgressSummaryString">
+            <summary>Builds the human-readable progress summary from Need* + progress dictionaries (e.g. Killed 1/10 monsters in ODOOM (10%)).</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.EnsureAuthoredStringsFromComputedProgress">
+            <summary>
+            Backfill only: when persisted data still has no authored strings (e.g. rows created before MetaData deserialize used case-insensitive binding).
+            Prefer fixing load path so <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.Title"/> and <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.Description"/> hydrate from storage.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.InvalidateObjectiveString">
+            <summary>Call after modifying any requirement dictionary so ProgressSummary is recomputed.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.ResetProgressDictionariesOnly">
+            <summary>Clears all progress dictionaries (Collected, Killed, Earnt, time/level progress, etc.) and completion fields.
+            Does not modify any Need* requirement dictionaries.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestObjectiveProgressDictionaryHelper">
+            <summary>Clears only <see cref="T:NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuestObjectiveDictionaries"/> progress properties; leaves Need* unchanged.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.ProgressPercent">
+            <summary>Overall completion percentage 0–100 (from objectives). Updated when progress is applied.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.GameSource">
+            <summary>Game (e.g. Doom, Quake) this quest/objective applies to. Used when quest is a sub-quest/objective.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.PrerequisiteQuestIds">
+            <summary>Quest IDs that must be completed before this quest can be started. Persisted in MetaData so LoadHolonsByMetaData and client can read it.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.LinkedGeoHotSpotId">
+            <summary>Optional GeoHotSpot id for this quest (e.g. visit or trigger media/text/link at a place).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.ExternalHandoffUri">
+            <summary>Optional URI for cross-app handoff (STAR CLI, OPortal, Telegram, web task, etc.).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.Objectives">
+            <summary>Objectives belonging to this quest (Option B). Persisted as part of the Quest holon via MetaData (CustomOASISProperty + StoreAsJsonString).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.NextGenSoftware#OASIS#API#Core#Interfaces#STAR#IQuestBase#Objectives">
+            <summary>Explicit implementation for IQuestBase; delegates to Objectives so interface and serialization both work.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.ResetQuestLevelProgressDictionariesOnly">
+            <summary>Clears quest-level progress dictionaries only (not Need*; not <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.QuestBase.Objectives"/>).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.AudioData">
+            <summary>Embedded audio bytes when type is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Audio"/>; clients should prefer this over <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.AudioUrl"/> when non-null and non-empty.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.AudioUrl">
+            <summary>Audio URL when type is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Audio"/> (used when <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.AudioData"/> is null or empty).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.VideoData">
+            <summary>Embedded video bytes when type is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Video"/>; prefer over <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.VideoUrl"/> when non-null and non-empty.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.VideoUrl">
+            <summary>Video URL when type is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Video"/> (used when <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.VideoData"/> is null or empty).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.TextContent">
+            <summary>Text body when type is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.Text"/>.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Holons.IGeoHotSpot.WebsiteUrl">
+            <summary>Website URL when type is <see cref="F:NextGenSoftware.OASIS.API.Core.Enums.GeoHotSpotType.WebsiteLink"/>.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature">
+            <summary>
+            Represents a function signature with parameter types and return type
+            Used for generating strongly-typed proxy methods
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature.FunctionName">
+            <summary>
+            Name of the function
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature.ReturnType">
+            <summary>
+            Return type of the function (C# type name)
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature.Parameters">
+            <summary>
+            Parameter information (name, type, optional)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature.IsAsync" -->
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature.Documentation">
+            <summary>
+            Documentation/description of the function
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IParameterInfo">
+            <summary>
+            Information about a function parameter
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IParameterInfo.Name">
+            <summary>
+            Parameter name
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IParameterInfo.Type">
+            <summary>
+            Parameter type (C# type name)
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IParameterInfo.IsOptional">
+            <summary>
+            Whether the parameter is optional
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IParameterInfo.DefaultValue">
+            <summary>
+            Default value if optional
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IParameterInfo.Documentation">
+            <summary>
+            Parameter documentation
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider">
+            <summary>
+            Unified interface for all interop library providers
+            Enables any library from any language/framework to be used
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.ProviderType">
+            <summary>
+            Provider type (Native, Python, JavaScript, WASM, etc.)
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.SupportedExtensions">
+            <summary>
+            Supported library types/extensions
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.InitializeAsync">
+            <summary>
+            Initialize the provider
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.LoadLibraryAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Load a library from file path
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.UnloadLibraryAsync(System.String)">
+            <summary>
+            Unload a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.InvokeAsync``1(System.String,System.String,System.Object[])">
+            <summary>
+            Invoke a function/method in the library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.InvokeAsync(System.String,System.String,System.Object[])">
+            <summary>
+            Invoke a function/method with dynamic return type
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.GetAvailableFunctionsAsync(System.String)">
+            <summary>
+            Get available functions/methods in the library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.IsLibraryLoaded(System.String)">
+            <summary>
+            Check if library is loaded
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.GetLibraryMetadataAsync(System.String)">
+            <summary>
+            Get library metadata
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.GetFunctionSignaturesAsync(System.String)">
+            <summary>
+            Get function signatures for a library (parameter types, return types)
+            Used for generating strongly-typed proxy methods
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider.DisposeAsync">
+            <summary>
+            Dispose/cleanup resources
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryMetadata">
+            <summary>
+            Metadata about a library
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryMetadata.FunctionSignatures">
+            <summary>
+            Function signatures with parameter types and return types
+            Used for generating strongly-typed proxy methods
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILoadedLibrary">
+            <summary>
+            Represents a loaded library instance
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager">
+            <summary>
+            COSMICManager exposes the full COSMIC ORM / Omniverse object model to the WEB4 OASIS API.
+            It provides strongly-typed Create/Read/Update/Delete and rich Get X For Y operations
+            for all CelestialBodies and CelestialSpaces defined in the STAR ontology.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.SearchChildrenForParentAsync(System.String,NextGenSoftware.OASIS.API.Core.Interfaces.IHolon,NextGenSoftware.OASIS.API.Core.Enums.HolonType)">
+            <summary>
+            Performs a nested (recursive) search for all children of the given holon type
+            under the specified parent, walking the full graph (children, grandchildren, etc.)
+            and filtering by the supplied search term (Name/Description for now).
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.SearchChildrenForParentAsync(System.String,System.Guid,NextGenSoftware.OASIS.API.Core.Enums.HolonType,NextGenSoftware.OASIS.API.Core.Enums.HolonType)">
+            <summary>
+            Overload that takes a parentId and loads the parent holon before performing the nested search.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.SearchHolonsForParentAsync``1(System.String,System.Guid,System.Guid,System.Collections.Generic.Dictionary{System.String,System.String},NextGenSoftware.OASIS.API.Core.Enums.MetaKeyValuePairMatchMode,System.Boolean,NextGenSoftware.OASIS.API.Core.Enums.HolonType,NextGenSoftware.OASIS.API.Core.Enums.ProviderType,System.Boolean,System.Boolean,System.Int32,System.Boolean,System.Boolean,NextGenSoftware.OASIS.API.Core.Enums.HolonType,System.Int32)">
+            <summary>
+            Searches for holons of the given type anywhere in the Omniverse, optionally scoped to a parentId.
+            This wraps the core COSMICManagerBase.SearchHolonsAsync helper and exposes it as a public API
+            using the standard OASISResult wrapper so other layers (web API, CLI, etc) have a consistent interface.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.SearchHolonsForParent``1(System.String,System.Guid,System.Guid,System.Collections.Generic.Dictionary{System.String,System.String},NextGenSoftware.OASIS.API.Core.Enums.MetaKeyValuePairMatchMode,System.Boolean,NextGenSoftware.OASIS.API.Core.Enums.HolonType,NextGenSoftware.OASIS.API.Core.Enums.ProviderType,System.Boolean,System.Boolean,System.Int32,System.Boolean,System.Boolean,NextGenSoftware.OASIS.API.Core.Enums.HolonType,System.Int32)">
+            <summary>
+            Non-async wrapper variant of SearchHolonsForParentAsync.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.SaveOmniverseAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IOmiverse)">
+            <summary>
+            Saves the specified Omniverse instance using the underlying STAR implementation.
+            The concrete Omniverse object must be created by the caller (in the STAR project) and
+            passed in via the IOmiverse interface.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.AddMultiverseAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IOmiverse,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMultiverse)">
+            <summary>
+            Adds a Multiverse to an existing Omniverse. The concrete Multiverse is created in the STAR project
+            and passed in via the IMultiverse interface.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.AddUniverseAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMultiverse,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IUniverse)">
+            <summary>
+            Adds a Universe to an existing Multiverse using the existing STAR GrandSuperStar core API
+            where available, otherwise falls back to saving the Universe directly.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateGalaxyHierarchyAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMultiverse,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IUniverse,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxyCluster,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxy)">
+            <summary>
+            Creates a complete Galaxy hierarchy:
+            Universe -> GalaxyCluster -> Galaxy using the supplied STAR instances.
+            The caller is responsible for constructing the concrete STAR classes and wiring
+            any additional properties; this helper wires parents and persists them using
+            the existing Add*Async methods.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateSolarSystemHierarchyAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxy,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.ISolarSystem,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IStar,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IPlanet,System.Collections.Generic.IEnumerable{NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMoon})">
+            <summary>
+            Creates a full SolarSystem hierarchy inside an existing Galaxy:
+            Galaxy -> SolarSystem (with central Star) -> Planet -> optional Moons.
+            The caller constructs the concrete STAR instances; this helper wires parents
+            and saves them in the correct order using the Add*Async APIs.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateSolarSystemWithPlanetsAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxy,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.ISolarSystem,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IStar,System.Collections.Generic.IEnumerable{System.ValueTuple{NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IPlanet,System.Collections.Generic.IEnumerable{NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMoon}}})">
+            <summary>
+            Creates a full SolarSystem hierarchy inside an existing Galaxy with a central Star
+            and a collection of Planets (each with optional Moons).
+            This is a higher-level convenience wrapper over AddSolarSystemAsync, AddPlanetAsync
+            and AddMoonAsync.
+            </summary>
+            <param name="parentGalaxy">The parent Galaxy that will own the new SolarSystem.</param>
+            <param name="solarSystem">The SolarSystem to create.</param>
+            <param name="star">The central Star for the SolarSystem.</param>
+            <param name="planetsWithMoons">
+            A collection of tuples where each entry contains a Planet and an optional collection of its Moons.
+            </param>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateSolarSystemWithPlanetsAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxy,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.ISolarSystem,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IStar,System.Collections.Generic.IEnumerable{NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IPlanet})">
+            <summary>
+            Creates a full SolarSystem hierarchy inside an existing Galaxy with a central Star
+            and a collection of Planets (without specifying Moons).
+            This is a convenience overload that wraps CreateSolarSystemWithPlanetsAsync and
+            assumes no Moons for the supplied Planets.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateUniverseWithStructureAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMultiverse,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IUniverse,System.Collections.Generic.IEnumerable{System.ValueTuple{NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxyCluster,System.Collections.Generic.IEnumerable{NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxy}}})">
+            <summary>
+            Creates a Universe with its initial GalaxyClusters and Galaxies:
+            Multiverse -> Universe -> GalaxyClusters -> Galaxies.
+            This uses AddUniverseAsync, AddGalaxyClusterAsync and AddGalaxyAsync under the hood.
+            </summary>
+            <param name="parentMultiverse">The Multiverse that will own the new Universe.</param>
+            <param name="universe">The Universe to create.</param>
+            <param name="galaxyClustersWithGalaxies">
+            A collection of tuples where each entry contains a GalaxyCluster and its Galaxies.
+            </param>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateMultiverseWithUniversesAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IOmiverse,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMultiverse,System.Collections.Generic.IEnumerable{NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IUniverse})">
+            <summary>
+            Creates a Multiverse under an Omniverse and populates it with one or more Universes.
+            This is a convenience wrapper over AddMultiverseAsync and AddUniverseAsync.
+            </summary>
+            <param name="parentOmniverse">The Omniverse that will own the new Multiverse.</param>
+            <param name="multiverse">The Multiverse to create.</param>
+            <param name="universes">The Universes to add to the Multiverse (e.g. MagicVerse, parallel universes, etc.).</param>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateUniverseWithChildrenAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMultiverse,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IUniverse,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a Universe with its full child hierarchy while preserving the cyberspace ontology.
+            Creates: Universe -> GalaxyCluster -> Galaxy -> SolarSystem -> Star -> Planet -> Moon
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateMultiverseWithChildrenAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IOmiverse,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMultiverse,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a Multiverse with its full child hierarchy while preserving the cyberspace ontology.
+            Creates: Multiverse -> Universe -> GalaxyCluster -> Galaxy -> SolarSystem -> Star -> Planet -> Moon
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateGalaxyWithChildrenAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxyCluster,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxy,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a Galaxy with its full child hierarchy while preserving the cyberspace ontology.
+            Creates: Galaxy -> SolarSystem -> Star -> Planet -> Moon
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateSolarSystemWithChildrenAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IGalaxy,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.ISolarSystem,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IStar,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a SolarSystem with its full child hierarchy while preserving the cyberspace ontology.
+            Creates: SolarSystem -> Star -> Planet -> Moon
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreatePlanetWithChildrenAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.ISolarSystem,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IPlanet,System.Boolean,System.Int32)">
+            <summary>
+            Creates a Planet with its child Moons while preserving the cyberspace ontology.
+            Creates: Planet -> Moon(s)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateStarWithChildrenAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.ISolarSystem,NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IStar,System.Boolean,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Creates a Star with its child Planets (and their Moons) while preserving the cyberspace ontology.
+            Creates: Star -> Planet(s) -> Moon(s)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.GetOrCreateUserMultiverseAsync">
+            <summary>
+            Gets or creates the user's default multiverse (parentId = avatarId, parentOmniverseId = main omniverse)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.IsUserOwnedAsync(NextGenSoftware.OASIS.API.Core.Interfaces.IHolon)">
+            <summary>
+            Checks if a holon belongs to the user's multiverse (user owns it)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.IsSystemMultiverse(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IMultiverse)">
+            <summary>
+            Checks if a multiverse is a system multiverse (MagicVerse or The Grand Simulation)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.GetMagicVerseAsync">
+            <summary>
+            Gets the MagicVerse system multiverse
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.GetGrandSimulationAsync">
+            <summary>
+            Gets The Grand Simulation system multiverse
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateMultiverseFactoryAsync(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IOmiverse,System.String,System.String)">
+            <summary>
+            Factory method to create a Multiverse instance
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.CreateSimulationProposalAsync(NextGenSoftware.OASIS.API.Core.Interfaces.IHolon,System.Guid)">
+            <summary>
+            Creates a proposal for The Grand Simulation
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.ListSimulationProposalsAsync(System.Boolean)">
+            <summary>
+            Lists all simulation proposals
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.VoteOnSimulationProposalAsync(System.Guid,System.Boolean)">
+            <summary>
+            Votes on a simulation proposal (accept or reject)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.COSMICManager.GetUserVoteOnProposalAsync(System.Guid)">
+            <summary>
+            Gets user's vote on a proposal (if they voted)
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.HotReloadManager">
+            <summary>
+            Manages hot reloading of libraries when files change
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.HotReloadManager.EnableHotReload(System.String,System.String,System.Func{System.String,System.Threading.Tasks.Task{NextGenSoftware.OASIS.Common.OASISResult{System.Boolean}}})">
+            <summary>
+            Enables hot reloading for a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.HotReloadManager.DisableHotReload(System.String)">
+            <summary>
+            Disables hot reloading for a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.HotReloadManager.IsHotReloadEnabled(System.String)">
+            <summary>
+            Checks if hot reload is enabled for a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.HotReloadManager.ReloadLibraryAsync(System.String)">
+            <summary>
+            Manually triggers a reload for a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.HotReloadManager.OnFileChanged(System.String,System.String,System.Func{System.String,System.Threading.Tasks.Task{NextGenSoftware.OASIS.Common.OASISResult{System.Boolean}}})">
+            <summary>
+            Handles file change events
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.HotReloadManager.Dispose">
+            <summary>
+            Disposes all watchers
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryReloadEventArgs">
+            <summary>
+            Event arguments for library reload events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver">
+            <summary>
+            Resolves library dependencies and ensures proper load order
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver.RegisterLibrary(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Registers a library and its dependencies
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver.ResolveLoadOrder(System.String)">
+            <summary>
+            Resolves load order for libraries based on dependencies
+            Returns libraries in order they should be loaded (dependencies first)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver.ResolveDependenciesRecursive(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.HashSet{System.String},System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Resolves dependencies recursively using topological sort
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver.GetAllDependencies(System.String)">
+            <summary>
+            Gets all dependencies for a library (transitive)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver.CollectDependenciesRecursive(System.String,System.Collections.Generic.HashSet{System.String},System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Collects all dependencies recursively
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver.HasDependencies(System.String)">
+            <summary>
+            Checks if a library has dependencies
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver.GetDirectDependencies(System.String)">
+            <summary>
+            Gets direct dependencies for a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryDependencyResolver.Clear">
+            <summary>
+            Clears the dependency graph
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropFactory">
+            <summary>
+            Factory for creating and configuring interop providers
+            Simplifies setup and registration of interop providers
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropFactory.CreateDefaultManagerAsync">
+            <summary>
+            Gets or creates the default shared interop manager instance
+            Uses singleton pattern for efficiency - all proxies share the same manager
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropFactory.CreateProvider(NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType)">
+            <summary>
+            Create a provider for a specific type
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager">
+            <summary>
+            Manages interoperable libraries from any language/framework
+            Routes calls to appropriate interop providers for best performance
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.PerformanceCache">
+            <summary>
+            Gets the performance cache instance
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.DependencyResolver">
+            <summary>
+            Gets the dependency resolver instance
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.HotReloadManager">
+            <summary>
+            Gets the hot reload manager instance
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.RegisterProviderAsync(NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.ILibraryInteropProvider)">
+            <summary>
+            Register an interop provider
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.LoadLibraryAsync(System.String,System.Nullable{NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType},System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Load a library (auto-detects provider type from file extension)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.InvokeAsync``1(System.String,System.String,System.Object[])">
+            <summary>
+            Invoke a function in a loaded library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.InvokeAsync(System.String,System.String,System.Object[])">
+            <summary>
+            Invoke a function with dynamic return type
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.UnloadLibraryAsync(System.String)">
+            <summary>
+            Unload a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.GetAvailableFunctionsAsync(System.String)">
+            <summary>
+            Get available functions in a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.DetectProviderType(System.String)">
+            <summary>
+            Auto-detect provider type from file extension
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.GetLibraryMetadataAsync(System.String)">
+            <summary>
+            Get library metadata including function signatures
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.GetFunctionSignaturesAsync(System.String)">
+            <summary>
+            Get function signatures for a library (parameter types, return types)
+            Used for generating strongly-typed proxy methods
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.GetLoadedLibraries">
+            <summary>
+            Get all loaded libraries
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.IsLibraryLoaded(System.String)">
+            <summary>
+            Check if library is loaded
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.ReloadLibraryInternalAsync(System.String,System.String,NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType)">
+            <summary>
+            Reloads a library (internal method for hot reload)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryInteropManager.ReloadLibraryAsync(System.String)">
+            <summary>
+            Manually reloads a library
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator">
+            <summary>
+            Generates C# proxy classes for libraries to enable IntelliSense support
+            Creates strongly-typed wrappers around interop libraries
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator.GenerateProxyClassAsync(System.String,System.String,System.String,NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType,System.String)">
+            <summary>
+            Generates a C# proxy class for a library
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator.GenerateProxyClassCode(System.String,System.String,System.String,NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType,System.Collections.Generic.List{NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature},System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Generates proxy class code
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator.GenerateTypedMethod(System.Text.StringBuilder,NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature)">
+            <summary>
+            Generates a strongly-typed method from a function signature
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator.GenerateGenericMethod(System.Text.StringBuilder,System.String)">
+            <summary>
+            Generates a generic method from a function name (fallback when signatures not available)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator.GetDefaultValueString(System.Object,System.String)">
+            <summary>
+            Gets default value string for C# code generation
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator.SanitizeParameterName(System.String)">
+            <summary>
+            Sanitizes a parameter name for C# code
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator.SaveProxyClassToOAPPAsync(System.String,System.String,System.String,System.String,NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType)">
+            <summary>
+            Saves proxy class to file in OAPP Source folder
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.LibraryProxyGenerator.UpdateOAPPProgramCsAsync(System.String,System.Collections.Generic.List{System.ValueTuple{System.String,System.String,NextGenSoftware.OASIS.API.ONODE.Core.Enums.InteropProviderType}})">
+            <summary>
+            Updates OAPP Program.cs with library references and example stubs
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache">
+            <summary>
+            Performance cache for library invocations
+            Caches results and tracks performance metrics
+            Supports LRU (Least Recently Used) and time-based expiration strategies
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.GetCached``1(System.String)">
+            <summary>
+            Gets cached result if available and not expired
+            Updates LRU order if using LRU strategy
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.CacheResult``1(System.String,``0,System.Nullable{System.TimeSpan})">
+            <summary>
+            Caches a result with optional expiry
+            Uses LRU eviction if cache is full
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.RecordInvocation(System.String,System.TimeSpan,System.Boolean)">
+            <summary>
+            Records performance metrics for a function invocation
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.GetMetrics(System.String)">
+            <summary>
+            Gets performance metrics for a function
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.GetAllMetrics">
+            <summary>
+            Gets all performance metrics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.ClearCache">
+            <summary>
+            Clears cache entries
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.ClearExpiredCache">
+            <summary>
+            Clears expired cache entries
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.UpdateLRUOrder(System.String)">
+            <summary>
+            Updates LRU order - moves key to end (most recently used)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.EvictLRUEntry">
+            <summary>
+            Evicts least recently used entry
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.RemoveCacheEntry(System.String)">
+            <summary>
+            Removes cache entry and updates LRU order
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.GetCacheStatistics">
+            <summary>
+            Gets cache statistics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.ClearMetrics">
+            <summary>
+            Clears performance metrics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceCache.GenerateCacheKey(System.String,System.String,System.Object[])">
+            <summary>
+            Generates a cache key from function name and parameters
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.PerformanceMetrics">
+            <summary>
+            Performance metrics for a function
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.CacheStatistics">
+            <summary>
+            Cache statistics
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.ProcessExecutionHelper">
+            <summary>
+            Helper class for executing scripts via external processes
+            Used by scripting language providers (Ruby, PHP, Lua, Perl, etc.)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.ProcessExecutionHelper.ExecuteScriptFunctionAsync``1(System.String,System.String,System.String,System.Object[],System.String[],System.Int32)">
+            <summary>
+            Executes a script function via external process
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Interop.ProcessExecutionHelper.DetectRuntime(System.String,System.String[])">
+            <summary>
+            Detects if a runtime is available in PATH or common locations
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MapManager">
+            <summary>
+            Helper methods for map competition system
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MapManager.CalculateExplorationBonusAsync(System.Guid,System.Guid)">
+            <summary>
+            Calculate exploration bonus based on avatar's exploration history
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MapManager.CalculateDiscoveryBonusAsync(System.Guid,System.Guid)">
+            <summary>
+            Calculate discovery bonus for finding new locations or items
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MapManager.CalculateSocialBonusAsync(System.Guid,System.Guid)">
+            <summary>
+            Calculate social bonus for group activities and interactions
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MapManager.GetAvatarExplorationHistoryAsync(System.Guid)">
+            <summary>
+            Get avatar's exploration history
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MapManager.GetLocationDetailsAsync(System.Guid)">
+            <summary>
+            Get location details for discovery calculations
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MapManager.GetAvatarSocialActivityAsync(System.Guid,System.Guid)">
+            <summary>
+            Get avatar's social activity data
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.LocationDetails">
+            <summary>
+            Location details for discovery calculations
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.LocationRarity">
+            <summary>
+            Location rarity levels
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.SocialActivity">
+            <summary>
+            Social activity data
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Managers.OLandManager._OlandByCountPrice">
+            <summary>
+            Key: OLAND Count
+            Value: Price
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.GetOASISDNAAsync">
+            <summary>
+            Get OASISDNA configuration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.UpdateOASISDNAAsync(NextGenSoftware.OASIS.API.DNA.OASISDNA)">
+            <summary>
+            Update OASISDNA configuration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.GetNetworkStatusAsync">
+            <summary>
+            Get network status
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.GetConnectedNodesAsync">
+            <summary>
+            Get connected nodes
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.ConnectToNodeAsync(System.String,System.String)">
+            <summary>
+            Connect to a specific node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.DisconnectFromNodeAsync(System.String)">
+            <summary>
+            Disconnect from a specific node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.GetNetworkStatsAsync">
+            <summary>
+            Get network statistics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.StartNetworkAsync">
+            <summary>
+            Start P2P network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.StopNetworkAsync">
+            <summary>
+            Stop P2P network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.GetNetworkTopologyAsync">
+            <summary>
+            Get network topology
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.BroadcastMessageAsync(System.String,System.String)">
+            <summary>
+            Broadcast message to network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONETManager.CallUnifiedAPIAsync(System.String,System.Object,System.String)">
+            <summary>
+            Call unified API - The GOD API that unifies Web2 and Web3
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.GetOASISDNAAsync">
+            <summary>
+            Get OASISDNA configuration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.UpdateOASISDNAAsync(NextGenSoftware.OASIS.API.DNA.OASISDNA)">
+            <summary>
+            Update OASISDNA configuration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.GetNodeStatusAsync">
+            <summary>
+            Get node status
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.GetNodeInfoAsync">
+            <summary>
+            Get node information
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.StartNodeAsync">
+            <summary>
+            Start ONODE
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.StopNodeAsync">
+            <summary>
+            Stop ONODE
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.RestartNodeAsync">
+            <summary>
+            Restart ONODE
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.GetNodeMetricsAsync">
+            <summary>
+            Get node performance metrics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.GetNodeLogsAsync(System.Int32)">
+            <summary>
+            Get node logs
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.UpdateNodeConfigAsync(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Update node configuration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.GetNodeConfigAsync">
+            <summary>
+            Get node configuration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.GetConnectedPeersAsync">
+            <summary>
+            Get connected peers
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.ONODEManager.GetNodeStatsAsync">
+            <summary>
+            Get node statistics
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestStatsStatsManagerIntegration">
+            <summary>
+            Connects <see cref="M:NextGenSoftware.OASIS.API.Core.Managers.StatsManager.GetQuestStatsAsync(System.Guid)"/> to <see cref="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestStatsAsync(System.Guid)"/> so avatar/dashboard stats read quest holons, not settings holons.
+            Call <see cref="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestStatsStatsManagerIntegration.RegisterWithStatsManager"/> once after <c>OASISBootLoader.BootOASIS</c>.
+            </summary>
+        </member>
+        <member name="E:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Base.STARNETManagerBase`4.OnPublishStatusChanged">
+            <summary>
+            Fired when there is a change in the publish status.
+            </summary>
+        </member>
+        <member name="E:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Base.STARNETManagerBase`4.OnInstallStatusChanged">
+            <summary>
+            Fired when there is a change to the Install status.
+            </summary>
+        </member>
+        <member name="E:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Base.STARNETManagerBase`4.OnUploadStatusChanged">
+            <summary>
+            Fired when there is a change in the upload status.
+            </summary>
+        </member>
+        <member name="E:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Base.STARNETManagerBase`4.OnDownloadStatusChanged">
+            <summary>
+            Fired when there is a change in the download status.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Base.STARNETManagerBase`4.CloneAsync(System.Guid,System.Guid,System.String,NextGenSoftware.OASIS.API.Core.Enums.ProviderType)">
+            <summary>
+            Clones a STARNET holon by its ID
+            </summary>
+            <param name="avatarId">The avatar ID for authentication/security</param>
+            <param name="holonId">The ID of the holon to clone</param>
+            <param name="newName">Optional new name for the cloned holon (if not provided, will append " - Clone" to original name)</param>
+            <param name="providerType">The provider type to use</param>
+            <returns>OASISResult containing the cloned holon</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Base.STARNETManagerBase`4.Clone(System.Guid,System.Guid,System.String,NextGenSoftware.OASIS.API.Core.Enums.ProviderType)">
+            <summary>
+            Clones a STARNET holon by its ID (synchronous version)
+            </summary>
+            <param name="avatarId">The avatar ID for authentication/security</param>
+            <param name="holonId">The ID of the holon to clone</param>
+            <param name="newName">Optional new name for the cloned holon (if not provided, will append " - Clone" to original name)</param>
+            <param name="providerType">The provider type to use</param>
+            <returns>OASISResult containing the cloned holon</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Base.STARNETManagerBase`4.GenerateLibraryProxyForOAPPAsync``1(`0,``0,System.String)">
+            <summary>
+            Generates a library proxy class when a library is added as a dependency to an OAPP
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.Base.STARNETManagerBase`4.DetectInteropProviderType(System.String)">
+            <summary>
+            Detects interop provider type from file extension
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager">
+            <summary>
+            Manages games in the STARNET system
+            Extends STARNETManagerBase to enable create, search, edit, publish, download, install functionality
+            Also manages game sessions, levels, areas, UI, audio, video, and input
+            Enables cross-game interoperability with shared assets, karma, NFTs, and quests
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.StartGameAsync(System.Guid,System.Guid)">
+            <summary>
+            Starts a new game session
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.EndGameAsync(System.Guid,System.Guid)">
+            <summary>
+            Ends a game session
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.LoadGameAsync(System.Guid,System.Guid)">
+            <summary>
+            Loads a game into memory
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.UnloadGameAsync(System.Guid,System.Guid)">
+            <summary>
+            Unloads a game from memory
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.LoadLevelAsync(System.Guid,System.String,System.Guid)">
+            <summary>
+            Loads a specific level in a game
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.UnloadLevelAsync(System.Guid,System.String)">
+            <summary>
+            Unloads a specific level
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.JumpToLevelAsync(System.Guid,System.String,System.Guid)">
+            <summary>
+            Jumps to a specific level
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.JumpToPointInLevelAsync(System.Guid,System.String,System.Double,System.Double,System.Double,System.Guid)">
+            <summary>
+            Jumps to a specific point in a level
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.LoadAreaAsync(System.Guid,System.Double,System.Double,System.Double,System.Double,System.Guid)">
+            <summary>
+            Loads an area around a specific point
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.UnloadAreaAsync(System.Guid,System.Guid)">
+            <summary>
+            Unloads an area
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.JumpToAreaAsync(System.Guid,System.Double,System.Double,System.Double,System.Guid,System.Double)">
+            <summary>
+            Jumps to a specific area
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.ShowTitleScreenAsync(System.Guid,System.Guid)">
+            <summary>
+            Shows the title screen
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.ShowMainMenuAsync(System.Guid,System.Guid)">
+            <summary>
+            Shows the main menu
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.ShowOptionsAsync(System.Guid,System.Guid)">
+            <summary>
+            Shows the options menu
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.ShowCreditsAsync(System.Guid,System.Guid)">
+            <summary>
+            Shows the credits screen
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.SetMasterVolumeAsync(System.Guid,System.Guid,System.Double)">
+            <summary>
+            Sets the master volume
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.SetVoiceVolumeAsync(System.Guid,System.Guid,System.Double)">
+            <summary>
+            Sets the voice volume
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.SetSoundVolumeAsync(System.Guid,System.Guid,System.Double)">
+            <summary>
+            Sets the sound volume
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.GetMasterVolumeAsync(System.Guid,System.Guid)">
+            <summary>
+            Gets the master volume
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.GetVoiceVolumeAsync(System.Guid,System.Guid)">
+            <summary>
+            Gets the voice volume
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.GetSoundVolumeAsync(System.Guid,System.Guid)">
+            <summary>
+            Gets the sound volume
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.SetVideoSettingAsync(System.Guid,System.Guid,NextGenSoftware.OASIS.API.Core.Enums.VideoSetting)">
+            <summary>
+            Sets the video quality setting
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.GetVideoSettingAsync(System.Guid,System.Guid)">
+            <summary>
+            Gets the video quality setting
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.BindKeysAsync(System.Guid,System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Binds keys to actions
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.GetKeyBindingsAsync(System.Guid,System.Guid)">
+            <summary>
+            Gets current key bindings
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.GetSharedAssetsAsync(System.Guid)">
+            <summary>
+            Gets shared inventory items (keycards, items, etc.) that can be used across games, apps, websites, services
+            Uses the AvatarDetail.Inventory property - the avatar's actual owned inventory
+            This inventory is shared across ALL games, apps, websites, and services - enabling true cross-platform interoperability
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.AddItemToInventoryAsync(System.Guid,NextGenSoftware.OASIS.API.Core.Interfaces.IInventoryItem)">
+            <summary>
+            Adds an item to the avatar's shared inventory (can be used across all games, apps, websites, services)
+            Uses AvatarManager to add to AvatarDetail.Inventory
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.RemoveItemFromInventoryAsync(System.Guid,System.Guid)">
+            <summary>
+            Removes an item from the avatar's shared inventory
+            Uses AvatarManager to remove from AvatarDetail.Inventory
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.HasItemAsync(System.Guid,System.Guid)">
+            <summary>
+            Checks if the avatar has a specific item in their shared inventory
+            Uses AvatarManager to check AvatarDetail.Inventory
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.HasItemByNameAsync(System.Guid,System.String)">
+            <summary>
+            Checks if the avatar has a specific item by name in their shared inventory
+            Uses AvatarManager to check AvatarDetail.Inventory
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.GetCrossGameQuestsAsync(System.Guid)">
+            <summary>
+            Gets active quests that span multiple games
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.GameManager.GetAvatarKarmaAsync(System.Guid)">
+            <summary>
+            Gets avatar's karma score (shared across all games)
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.STARNFTManager">
+            Note: You can choose to use the base STARNETDNA (and other base classes) or extend them and inject them in here...
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.RuntimeManager.StartAsync(System.Guid,System.Guid)">
+            <summary>
+            Starts a runtime by its ID
+            </summary>
+            <param name="avatarId">The avatar ID</param>
+            <param name="runtimeId">The runtime ID to start</param>
+            <returns>OASISResult indicating success or failure</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.RuntimeManager.StopAsync(System.Guid,System.Guid)">
+            <summary>
+            Stops a runtime by its ID
+            </summary>
+            <param name="avatarId">The avatar ID</param>
+            <param name="runtimeId">The runtime ID to stop</param>
+            <returns>OASISResult indicating success or failure</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.RuntimeManager.GetStatusAsync(System.Guid,System.Guid)">
+            <summary>
+            Gets the status of a runtime by its ID
+            </summary>
+            <param name="avatarId">The avatar ID</param>
+            <param name="runtimeId">The runtime ID to check</param>
+            <returns>OASISResult with runtime status information</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MissionManager.CompleteMissionAsync(System.Guid,System.Guid,System.String)">
+            <summary>
+            Completes a mission for the specified avatar
+            </summary>
+            <param name="avatarId">The avatar completing the mission</param>
+            <param name="missionId">The mission to complete</param>
+            <param name="completionNotes">Optional completion notes</param>
+            <returns>Success status</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MissionManager.GetMissionLeaderboardAsync(System.Guid,System.Int32)">
+            <summary>
+            Gets mission leaderboard for a specific mission
+            </summary>
+            <param name="missionId">The mission ID</param>
+            <param name="limit">Number of entries to return</param>
+            <returns>Mission leaderboard entries</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MissionManager.GetMissionRewardsAsync(System.Guid)">
+            <summary>
+            Gets mission rewards for a specific mission
+            </summary>
+            <param name="missionId">The mission ID</param>
+            <returns>Mission rewards</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MissionManager.GetMissionStatsAsync(System.Guid)">
+            <summary>
+            Gets mission statistics for a specific avatar
+            </summary>
+            <param name="avatarId">The avatar ID</param>
+            <returns>Mission statistics</returns>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MissionLeaderboard">
+            <summary>
+            Mission leaderboard entry
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.MissionReward">
+            <summary>
+            Mission reward
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager">
+            <summary>
+            Helper methods for quest rewards
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.LoadAllQuestsForAvatarAsync(System.Guid,System.Boolean,System.Int32,NextGenSoftware.OASIS.API.Core.Enums.ProviderType)">
+            <summary>Load all quests for avatar using IQuest path; promotes MetaData to strongly-typed properties (e.g. Status from MetaData["QuestStatus"]).</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.LoadAllQuestsForAvatar(System.Guid,System.Boolean,System.Int32,NextGenSoftware.OASIS.API.Core.Enums.ProviderType)">
+            <summary>Load all quests for avatar using IQuest path; promotes MetaData to strongly-typed properties.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.PromoteQuestMetaDataToProperties(NextGenSoftware.OASIS.API.ONODE.Core.Holons.Quest)">
+            <summary>Promote MetaData to strongly-typed Quest properties so API returns quests with Objectives (and Status) populated on first load.
+            Status: prefer "Status" (HolonManager.MapMetaData), fallback "QuestStatus".
+            Objectives: deserialize <c>MetaData["Objectives"]</c> JSON when the quest has no objectives yet; if still empty, synthesize from child <see cref="T:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Quest"/> holons.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.DeserializeObjectivesFromMetaDataJsonString(System.String)">
+            <summary>Deserialize persisted <c>Objectives</c> array from MetaData; JSON matches <see cref="T:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective"/> (Title, Description, ProgressSummary, dictionaries).</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.CanStartQuestAsync(System.Guid,System.Guid)">
+            <summary>
+            Returns whether the avatar can start the quest (quest is NotStarted and any MetaData PrerequisiteQuestIds are completed). ParentQuestId is for sub-quests/objectives only, not prerequisites.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.StartQuestAsync(System.Guid,System.Guid,System.String)">
+            <summary>
+            Starts a quest for the specified avatar. Validates prerequisites: if the quest has PrerequisiteQuestIds in MetaData, those quests must be completed first. (ParentQuestId is used for sub-quests/objectives; when all are complete the parent is marked complete.)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.CompleteQuestObjectiveAsync(System.Guid,System.Guid,System.Guid,System.String,System.String)">
+            <summary>
+            Completes a quest objective. Uses Quest.Objectives (Option B) first; falls back to child Quests for backward compatibility.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.OrderIncompleteObjectivesForProgress(System.Collections.Generic.IList{NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective},System.Nullable{System.Guid})">
+            <summary>Incomplete objectives in apply order: <paramref name="activeObjectiveId"/> first if present on the quest, then by <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective.Order"/> and Id. Same ordering intent as STAR client <c>MergeQuestProgressIntoLocalCache</c>.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.ApplyQuestProgressAsync(System.Guid,System.Guid,System.String,NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestProgressDelta)">
+            <summary>
+            Applies in-game progress (kills, pickups, XP, level time) to the quest's incomplete objectives.
+            Updates progress dictionaries; completes objectives when thresholds are met; completes the quest when all objectives are done.
+            Objectives are processed in <see cref="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.OrderIncompleteObjectivesForProgress(System.Collections.Generic.IList{NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective},System.Nullable{System.Guid})"/> order (active objective first when <see cref="P:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestProgressDelta.ActiveObjectiveId"/> is set); every incomplete row receives the delta bundle and <see cref="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.ApplyDeltaToObjective(NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective,System.String,NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestProgressDelta)"/> only applies matching Need* fields (same idea as the STAR client merge).
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.ResetObjectiveProgressAsync(System.Guid,System.Guid)">
+            <summary>Clears every embedded objective’s progress dictionaries and quest-level progress; does not change Need* requirements.
+            Resets completion flags and 0% approx; if the quest was Completed, sets status back to InProgress.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.ObjectiveApproximatePercent(NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective)">
+            <summary>Rough completion 0–99 for one objective from requirement vs progress dicts.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.ResolveDictGameKey(System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.IList{System.String}},System.String)">
+            <summary>Resolve which game key in a need dict matches the incoming <paramref name="gs"/> (ODOOM vs Doom, OQUAKE vs Quake).</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.ObjectiveHasAnyRequirementForGame(NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective,System.String)">
+            <summary>True if this objective has at least one Need* row resolvable for <paramref name="gs"/> (avoids vacuous completion when all OkNeed branches are "no requirement").</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.CompleteQuestAsync(System.Guid,System.Guid,System.String)">
+            <summary>
+            Completes a quest for the specified avatar
+            </summary>
+            <param name="avatarId">The avatar completing the quest</param>
+            <param name="questId">The quest to complete</param>
+            <param name="completionNotes">Optional completion notes</param>
+            <returns>Success status</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestLeaderboardAsync(System.Guid,System.Int32)">
+            <summary>
+            Gets quest leaderboard for a specific quest
+            </summary>
+            <param name="questId">The quest ID</param>
+            <param name="limit">Number of entries to return</param>
+            <returns>Quest leaderboard entries</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestRewardsAsync(System.Guid)">
+            <summary>
+            Gets quest rewards for a specific quest
+            </summary>
+            <param name="questId">The quest ID</param>
+            <returns>Quest rewards</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestStatsAsync(System.Guid)">
+            <summary>
+            Gets quest statistics for a specific avatar
+            </summary>
+            <param name="avatarId">The avatar ID</param>
+            <returns>Quest statistics</returns>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetDefaultQuestRewards(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuest)">
+            <summary>
+            Get default rewards based on quest properties
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.CalculateBonusRewards(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuest,NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestCompletionStats)">
+            <summary>
+            Calculate bonus rewards based on completion statistics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.CalculateBaseXPReward(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuest)">
+            <summary>
+            Calculate base XP reward
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.CalculateBaseKarmaReward(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuest)">
+            <summary>
+            Calculate base karma reward
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestTypeMultiplier(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuest)">
+            <summary>
+            Get quest type multiplier for rewards
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetCompletedQuestsForQuestAsync(System.Guid)">
+            <summary>
+            Get completed quests for a specific quest
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestDifficultyLevel(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuest)">
+            <summary>
+            Get quest difficulty level safely
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestEstimatedCompletionTime(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuest)">
+            <summary>
+            Get quest estimated completion time safely
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestType(NextGenSoftware.OASIS.API.Core.Interfaces.STAR.IQuest)">
+            <summary>
+            Get quest type safely
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestManager.GetQuestCompletionStatsAsync(System.Guid)">
+            <summary>
+            Get quest completion statistics
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestLeaderboard">
+            <summary>
+            Quest leaderboard entry
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestReward">
+            <summary>
+            Quest reward
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestCompletionStats">
+            <summary>
+            Quest completion statistics
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestProgressDelta">
+            <summary>In-game progress delta for ApplyQuestProgressAsync (kills, XP, pickups by type, level time). Matches Objective progress dictionaries: ArmorCollected, HealthCollected, WeaponsCollected, PowerupsCollected, AmmoCollected, ItemsCollected, KeysCollected.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestProgressDelta.ActiveObjectiveId">
+            <summary>Optional profile active objective; when set, that incomplete objective is updated before others (then Order, Id). Omit when the caller does not specify one.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestProgressApplyResult">
+            <summary>Result of applying quest progress (percent complete, quest finished).</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestObjectiveDescriptionInference">
+            <summary>
+            Legacy helper: infer Need* dictionaries from free-text when no explicit objective dictionaries are supplied (unused by current STAR create path, which requires Dictionaries).
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Managers.QuestObjectiveDescriptionInference.ApplyInferredNeeds(NextGenSoftware.OASIS.API.ONODE.Core.Holons.Objective,System.String,System.String,System.String)">
+            <summary>Populate requirement dictionaries from human-readable text. Uses objective <paramref name="gameSource"/> as the game key (e.g. ODOOM, OQUAKE).</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.HoloNETClientExtensions">
+            <summary>
+            Extension methods for HoloNET client to support network metrics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.HoloNETClientExtensions.GetNetworkLatencyAsync(NextGenSoftware.Holochain.HoloNET.Client.HoloNETClientBase)">
+            <summary>
+            Get network latency from Holochain conductor
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.HoloNETClientExtensions.GetNetworkBandwidthAsync(NextGenSoftware.Holochain.HoloNET.Client.HoloNETClientBase)">
+            <summary>
+            Get network bandwidth from Holochain conductor
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.HoloNETClientExtensions.GetNetworkUptimeAsync(NextGenSoftware.Holochain.HoloNET.Client.HoloNETClientBase)">
+            <summary>
+            Get network uptime from Holochain conductor
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.HoloNETClientExtensions.GetNetworkStatsAsync(NextGenSoftware.Holochain.HoloNET.Client.HoloNETClientBase)">
+            <summary>
+            Get network stats from Holochain conductor
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.InternalP2PNetworkProvider">
+            <summary>
+            Internal P2P Network Provider - Uses custom ONET protocol implementation
+            Provides the current ONET network functionality with custom consensus, routing, and security
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ConsensusReachedEventArgs">
+            <summary>
+            Event arguments for consensus reached events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ConsensusFailedEventArgs">
+            <summary>
+            Event arguments for consensus failed events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.RouteUpdatedEventArgs">
+            <summary>
+            Event arguments for route updated events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.RouteFailedEventArgs">
+            <summary>
+            Event arguments for route failed events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.SecurityAlertEventArgs">
+            <summary>
+            Event arguments for security alert events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.AuthenticationFailedEventArgs">
+            <summary>
+            Event arguments for authentication failed events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NodeDiscoveredEventArgs">
+            <summary>
+            Event arguments for node discovered events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NodeLostEventArgs">
+            <summary>
+            Event arguments for node lost events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider">
+            <summary>
+            Interface for P2P network providers (Internal ONET or HoloNET)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.InitializeAsync">
+            <summary>
+            Initialize the P2P network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.StartNetworkAsync">
+            <summary>
+            Start the P2P network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.StopNetworkAsync">
+            <summary>
+            Stop the P2P network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.GetNetworkStatusAsync">
+            <summary>
+            Get network status
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.GetConnectedNodesAsync">
+            <summary>
+            Get connected nodes
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.ConnectToNodeAsync(System.String,System.String)">
+            <summary>
+            Connect to a specific node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.DisconnectFromNodeAsync(System.String)">
+            <summary>
+            Disconnect from a node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.BroadcastMessageAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Broadcast a message to the network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.SendMessageAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Send a message to a specific node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.GetNetworkTopologyAsync">
+            <summary>
+            Get network topology
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.GetNetworkHealthAsync">
+            <summary>
+            Get network health metrics
+            </summary>
+        </member>
+        <member name="E:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.NodeConnected">
+            <summary>
+            Event fired when a new node connects
+            </summary>
+        </member>
+        <member name="E:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.NodeDisconnected">
+            <summary>
+            Event fired when a node disconnects
+            </summary>
+        </member>
+        <member name="E:NextGenSoftware.OASIS.API.ONODE.Core.Network.IP2PNetworkProvider.MessageReceived">
+            <summary>
+            Event fired when a message is received
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkStatus">
+            <summary>
+            Network status information
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkTopology">
+            <summary>
+            Network topology information
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkConnection">
+            <summary>
+            Network connection between nodes
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkHealth">
+            <summary>
+            Network health metrics
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NodeConnectedEventArgs">
+            <summary>
+            Event args for node connected event
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NodeDisconnectedEventArgs">
+            <summary>
+            Event args for node disconnected event
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.MessageReceivedEventArgs">
+            <summary>
+            Event args for message received event
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkMetricsService">
+            <summary>
+            Network Metrics Service - Single source of truth for all network calculations
+            Follows Single Responsibility Principle
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkMetricsService.CalculateHealthFromMetricsAsync(System.Object)">
+            <summary>
+            Calculate real network health from Holochain conductor metrics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkMetricsService.CalculateHealthFromConnections(System.Collections.Generic.Dictionary{System.String,NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkConnection},System.Collections.Generic.Dictionary{System.String,NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkConnection})">
+            <summary>
+            Calculate health from connection data
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkMetricsService.ParseNetworkStatsToNodes(System.Object)">
+            <summary>
+            Parse real network stats to extract node information
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkMetricsService.CalculateAverageLatency(System.Collections.Generic.Dictionary{System.String,NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkConnection})">
+            <summary>
+            Calculate real latency from network connections
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkMetricsService.CalculateTotalThroughput(System.Collections.Generic.Dictionary{System.String,NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkConnection})">
+            <summary>
+            Calculate real throughput from network connections
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkMetricsService.GetNetworkIdAsync">
+            <summary>
+            Get real network ID from Holochain conductor
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.NetworkMetrics">
+            <summary>
+            Network metrics data structure
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.SystemMetrics">
+            <summary>
+            System metrics data structure
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETAPIGateway">
+            <summary>
+            ONET API Gateway - The unified API that bridges Web2 and Web3
+            Creates a single API interface that abstracts all of the internet (Web2 + Web3)
+            The "GOD API" - One API to rule them all!
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETAPIGateway.CallUnifiedAPIAsync(System.String,System.Object,System.String)">
+            <summary>
+            Call unified API - The GOD API that unifies Web2 and Web3
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETAPIGateway.RegisterEndpointAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Register a new API endpoint
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETAPIGateway.GetAPIGatewayStatsAsync">
+            <summary>
+            Get API Gateway statistics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETAPIGateway.GetAvailableEndpointsAsync">
+            <summary>
+            Get available API endpoints
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETConsensus">
+            <summary>
+            ONET Consensus Mechanism - Ensures network coordination and agreement
+            Implements hybrid consensus combining Proof of Stake, Proof of Work, and Byzantine Fault Tolerance
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETConsensus.ProposeAsync(System.String,System.String,System.Object)">
+            <summary>
+            Propose a new consensus decision
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETConsensus.VoteAsync(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Vote on a consensus proposal
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETConsensus.GetConsensusStatusAsync">
+            <summary>
+            Get current consensus status
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETConsensus.AddConsensusNodeAsync(System.String,System.Double,System.Collections.Generic.List{System.String})">
+            <summary>
+            Add a node to the consensus mechanism
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETConsensus.RemoveConsensusNodeAsync(System.String)">
+            <summary>
+            Remove a node from the consensus mechanism
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETConsensus.GetConsensusStatsAsync">
+            <summary>
+            Get consensus statistics
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETDiscovery">
+            <summary>
+            ONET Discovery System - Finds and connects to available ONET nodes
+            Implements advanced discovery protocols including DHT, mDNS, and blockchain-based discovery
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETDiscovery.DiscoverAvailableNodesAsync">
+            <summary>
+            Discover available ONET nodes using all discovery methods
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETDiscovery.RegisterNodeAsync(System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Register this node for discovery by other nodes
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETDiscovery.UnregisterNodeAsync(System.String)">
+            <summary>
+            Unregister this node from discovery
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETDiscovery.GetDiscoveryStatsAsync">
+            <summary>
+            Get discovery statistics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETDiscovery.AddDiscoveryListenerAsync(NextGenSoftware.OASIS.API.ONODE.Core.Network.DiscoveryListener)">
+            <summary>
+            Add discovery listener for real-time node discovery events
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETHyperDriveIntegration">
+            <summary>
+            ONET HyperDrive Integration - Integrates ONET P2P network with OASIS HyperDrive
+            Provides intelligent routing, auto-failover, and load balancing across the entire OASIS ecosystem
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETHyperDriveIntegration.InitializeIntegrationAsync">
+            <summary>
+            Initialize ONET-HyperDrive integration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETHyperDriveIntegration.RouteRequestAsync``1(NextGenSoftware.OASIS.API.Core.Interfaces.IRequest,NextGenSoftware.OASIS.API.Core.Enums.LoadBalancingStrategy,System.Boolean)">
+            <summary>
+            Route request through unified ONET-HyperDrive network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETHyperDriveIntegration.GetUnifiedTopologyAsync">
+            <summary>
+            Get unified network topology combining ONET and HyperDrive
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETHyperDriveIntegration.OptimizeNetworkAsync">
+            <summary>
+            Optimize network performance across ONET and HyperDrive
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETHyperDriveIntegration.GetUnifiedAPIStatsAsync">
+            <summary>
+            Get unified API statistics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETHyperDriveIntegration.BuildHyperDriveTopology(NextGenSoftware.OASIS.API.Core.Managers.OASISHyperDrive.NetworkTopology)">
+            <summary>
+            Converts OASISHyperDrive's summary-only NetworkTopology (counts only, no per-provider list) into the
+            per-node HyperDriveTopology shape this integration class needs, by reading the live provider list
+            directly from ProviderManager. Never returns null, so CalculateHyperDriveHealth is safe to call.
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol">
+            <summary>
+            ONET Protocol - The unified network protocol that bridges Web2 and Web3
+            Creates a network of networks to unify all of the internet into one powerful API
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol.StartNetworkAsync">
+            <summary>
+            Start the ONET P2P network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol.StartAsync">
+            <summary>
+            Start the ONET P2P network (alias for StartNetworkAsync)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol.StopNetworkAsync">
+            <summary>
+            Stop the ONET P2P network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol.ConnectToNodeAsync(System.String,System.String)">
+            <summary>
+            Connect to a specific ONET node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol.SendMessageAsync(NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETMessage)">
+            <summary>
+            Send message through ONET network with intelligent routing
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol.DiscoverNodesAsync">
+            <summary>
+            Discover and connect to available ONET nodes
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol.CallUnifiedAPIAsync(System.String,System.Object,System.String)">
+            <summary>
+            Get unified API access through ONET gateway
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProtocol.GetNetworkTopologyAsync">
+            <summary>
+            Get network topology and status
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProviderIntegration">
+            <summary>
+            ONET Provider Integration - Integrates all Web2 and Web3 providers with ONET network
+            Creates a unified provider ecosystem that works seamlessly across all OASIS providers
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProviderIntegration.InitializeIntegrationAsync">
+            <summary>
+            Initialize ONET-Provider integration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProviderIntegration.RouteThroughProviderAsync``1(NextGenSoftware.OASIS.API.Core.Enums.ProviderType,NextGenSoftware.OASIS.API.Core.Interfaces.IRequest,NextGenSoftware.OASIS.API.Core.Enums.ProviderCategory)">
+            <summary>
+            Route request through optimal provider via ONET network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProviderIntegration.GetAvailableProvidersAsync">
+            <summary>
+            Get all available providers through ONET
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETProviderIntegration.GetProviderStatsAsync">
+            <summary>
+            Get provider statistics through ONET
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETRouting">
+            <summary>
+            ONET Intelligent Routing System - Optimizes message delivery across the network
+            Implements advanced routing algorithms including Dijkstra, A*, and machine learning-based routing
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETRouting.AddNodeAsync(NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETNode)">
+            <summary>
+            Add a node to the routing table
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETRouting.RemoveNodeAsync(System.String)">
+            <summary>
+            Remove a node from the routing table
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETRouting.FindOptimalRouteAsync(System.String,System.Int32)">
+            <summary>
+            Find optimal route to target node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETRouting.UpdateNodeMetricsAsync(System.String,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Update node metrics for routing optimization
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETRouting.GetRoutingStatsAsync">
+            <summary>
+            Get routing statistics
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETSecurity">
+            <summary>
+            ONET Security System - Provides end-to-end encryption and security for P2P communications
+            Implements quantum-resistant cryptography and zero-trust security model
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETSecurity.EstablishSecureConnectionAsync(System.String,System.String)">
+            <summary>
+            Establish secure connection with a node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETSecurity.EncryptMessageAsync(NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETMessage)">
+            <summary>
+            Encrypt message for secure transmission
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETSecurity.DecryptMessageAsync(NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETMessage)">
+            <summary>
+            Decrypt received message
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETSecurity.GenerateNodeKeysAsync(System.String)">
+            <summary>
+            Generate security keys for a node
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETSecurity.GetSecurityStatsAsync">
+            <summary>
+            Get security statistics
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETUnifiedArchitecture">
+            <summary>
+            ONET Unified Architecture - The ultimate unified system that merges all OASIS components
+            Creates the "GOD API" that unifies Web2, Web3, P2P, HyperDrive, and all OASIS technologies
+            This is the pinnacle of the OASIS vision - One API to rule them all!
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETUnifiedArchitecture.InitializeUnifiedArchitectureAsync">
+            <summary>
+            Initialize the unified OASIS architecture
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETUnifiedArchitecture.CallGODAPIAsync``1(System.String,System.String,System.Object,System.String,System.String)">
+            <summary>
+            Call the unified GOD API - One API to rule them all!
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETUnifiedArchitecture.GetUnifiedStatsAsync">
+            <summary>
+            Get unified architecture statistics
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETUnifiedArchitecture.GetUnifiedServicesAsync">
+            <summary>
+            Get all available unified services
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETUnifiedArchitecture.OptimizeUnifiedArchitectureAsync">
+            <summary>
+            Optimize the entire unified architecture
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB4APIIntegration">
+            <summary>
+            ONET WEB4 API Integration - Integrates ONET P2P network with WEB4 OASIS API
+            Provides unified access to all WEB4 APIs through the ONET network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB4APIIntegration.InitializeIntegrationAsync">
+            <summary>
+            Initialize ONET-WEB4 API integration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB4APIIntegration.CallWEB4APIAsync``1(System.String,System.String,System.Object,System.String)">
+            <summary>
+            Call WEB4 API through ONET network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB4APIIntegration.GetAvailableWEB4APIsAsync">
+            <summary>
+            Get all available WEB4 APIs through ONET
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB4APIIntegration.GetWEB4APIStatsAsync">
+            <summary>
+            Get WEB4 API statistics through ONET
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB5STARIntegration">
+            <summary>
+            ONET WEB5 STAR API Integration - Integrates ONET P2P network with WEB5 STAR API
+            Provides unified access to all STAR gamification, metaverse, and business features through ONET
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB5STARIntegration.InitializeIntegrationAsync">
+            <summary>
+            Initialize ONET-WEB5 STAR integration
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB5STARIntegration.CallSTARAPIAsync``1(System.String,System.String,System.Object,System.String)">
+            <summary>
+            Call STAR API through ONET network
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB5STARIntegration.GetAvailableSTARAPIsAsync">
+            <summary>
+            Get all available STAR APIs through ONET
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Network.ONETWEB5STARIntegration.GetSTARAPIStatsAsync">
+            <summary>
+            Get STAR API statistics through ONET
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Network.P2PNetworkType">
+            <summary>
+            Defines the type of P2P network implementation for ONET
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Network.P2PNetworkType.Internal">
+            <summary>
+            Internal P2P network implementation (current ONET implementation)
+            Uses custom ONET protocol, consensus, routing, and security mechanisms
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.Network.P2PNetworkType.HoloNET">
+            <summary>
+            HoloNET P2P network implementation
+            Uses Holochain's native P2P capabilities through HoloNET client
+            Leverages Holochain's built-in consensus, routing, and security features
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.FunctionSignature">
+            <summary>
+            Implementation of function signature
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.FunctionSignature.ToCSharpSignature">
+            <summary>
+            Generates a C# method signature string
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.ParameterInfo">
+            <summary>
+            Implementation of parameter info
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.LibraryMetadata">
+            <summary>
+            Implementation of library metadata
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.LibraryMetadata.GetFunctionSignature(System.String)">
+            <summary>
+            Gets function signature by name
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.LibraryMetadata.AddFunctionSignature(NextGenSoftware.OASIS.API.ONODE.Core.Interfaces.Interop.IFunctionSignature)">
+            <summary>
+            Adds a function signature
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.LoadedLibrary">
+            <summary>
+            Implementation of loaded library
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.NativeLibraryInfo">
+            <summary>
+            Information about a loaded native library
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.NativeLibraryInfo.Handle">
+            <summary>
+            Handle to the loaded native library
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.API.ONODE.Core.Objects.Interop.NativeLibraryInfo.LibraryPath">
+            <summary>
+            Path to the library file
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.ONODE">
+            <summary>
+            Root facade for ONODE Core API. Exposes manager endpoints for tests and consumers.
+            EndpointName identifies this as ONODE (not a storage/blockchain ProviderType).
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.API.ONODE.Core.ONODE.EndpointName">
+            <summary>Identifies this endpoint (ONODE). Not a storage/blockchain provider.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.ClojureInteropProvider">
+            <summary>
+            Clojure interop provider
+            Extracts function signatures from Clojure source code
+            Clojure compiles to JVM bytecode, so can also use Java provider for compiled libraries
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.DartInteropProvider">
+            <summary>
+            Dart interop provider
+            Extracts function signatures from Dart source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.DotNetInteropProvider">
+            <summary>
+            .NET interop provider for .NET assemblies
+            Direct reflection-based access to .NET libraries
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.GoInteropProvider">
+            <summary>
+            Go interop provider via CGO (C interop)
+            Go libraries are compiled to native libraries and can be accessed via P/Invoke
+            Extracts function signatures from Go source code or compiled libraries
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.GroovyInteropProvider">
+            <summary>
+            Groovy interop provider
+            Extracts function signatures from Groovy source code
+            Groovy compiles to JVM bytecode, so can also use Java provider for compiled libraries
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.GrpcInteropProvider">
+            <summary>
+            gRPC interop provider for remote libraries
+            High-performance RPC protocol
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.JavaInteropProvider">
+            <summary>
+            Java interop provider using JNI (Java Native Interface)
+            Extracts method signatures from JAR and class files
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.JavaScriptInteropProvider">
+            <summary>
+            JavaScript/Node.js interop provider using ClearScript or Edge.js
+            JavaScript interop provider - extracts function signatures from source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.JuliaInteropProvider">
+            <summary>
+            Julia interop provider
+            Extracts function signatures from Julia source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.KotlinInteropProvider">
+            <summary>
+            Kotlin interop provider
+            Extracts function signatures from Kotlin source code
+            Kotlin compiles to JVM bytecode, so can also use Java provider for compiled libraries
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.LuaInteropProvider">
+            <summary>
+            Lua interop provider
+            Extracts function signatures from Lua source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.NativePInvokeProvider">
+            <summary>
+            P/Invoke provider for native C/C++/Rust libraries
+            Best performance - direct native code execution
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PerlInteropProvider">
+            <summary>
+            Perl interop provider
+            Extracts function signatures from Perl source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PhpInteropProvider">
+            <summary>
+            PHP interop provider
+            Extracts function signatures from PHP source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PowerShellInteropProvider">
+            <summary>
+            PowerShell interop provider
+            Extracts function signatures from PowerShell source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PythonInteropProvider">
+            <summary>
+            Python interop provider using Python.NET
+            Supports both signature extraction (works without runtime) and code execution (requires Python.NET runtime)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PythonInteropProvider.TryInitializePythonRuntime">
+            <summary>
+            Attempts to initialize Python.NET runtime (graceful fallback if not available)
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PythonInteropProvider.InvokePythonFunctionAsync``1(NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PythonInteropProvider.PythonModuleInfo,System.String,System.Object[])">
+            <summary>
+            Invokes a Python function using Python.NET runtime
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PythonInteropProvider.GetPythonFunctionsFromRuntime(NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.PythonInteropProvider.PythonModuleInfo)">
+            <summary>
+            Gets Python functions from runtime (if available)
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.RestApiInteropProvider">
+            <summary>
+            REST API interop provider for remote libraries
+            Supports HTTP/HTTPS endpoints for library functions
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.RInteropProvider">
+            <summary>
+            R interop provider
+            Extracts function signatures from R source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.RubyInteropProvider">
+            <summary>
+            Ruby interop provider
+            Extracts function signatures from Ruby source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.ScalaInteropProvider">
+            <summary>
+            Scala interop provider
+            Extracts function signatures from Scala source code
+            Scala compiles to JVM bytecode, so can also use Java provider for compiled libraries
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.ShellScriptInteropProvider">
+            <summary>
+            Shell script interop provider (Bash, Sh, etc.)
+            Extracts function signatures from shell script source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.TypeScriptInteropProvider">
+            <summary>
+            TypeScript interop provider
+            Extracts function signatures from TypeScript source code
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.API.ONODE.Core.Providers.Interop.WebAssemblyInteropProvider">
+            <summary>
+            WebAssembly (WASM) interop provider
+            Supports libraries compiled to WASM from many languages (Rust, C/C++, Go, etc.)
+            Extracts function signatures from WASM binary format
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NextGenSoftware.OASIS.Web8.Core</name>
+    </assembly>
+    <members>
+        <member name="T:NextGenSoftware.OASIS.Web8.Core.Enums.BridgeFormat">
+            <summary>The wire formats the WEB8 protocol bridge can translate into/out of the unified MeshMessage envelope.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web8.Core.Enums.BridgeFormat.Json">
+            <summary>Payload is already a JSON document - passed through as-is.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web8.Core.Enums.BridgeFormat.FormUrlEncoded">
+            <summary>Payload is application/x-www-form-urlencoded key=value pairs - parsed into a JSON object.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web8.Core.Enums.BridgeFormat.PlainText">
+            <summary>Payload is plain text - wrapped as { "text": "..." }.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web8.Core.Enums.NodeType">
+            <summary>The role a node plays in the WEB8 mesh.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web8.Core.Managers.GalacticMeshManager">
+            <summary>
+            The fractal holonic mesh network at the heart of WEB8. Nodes register themselves (any externally-reachable
+            system that can accept a relayed message at an HTTP endpoint), declare weighted links to other nodes, and
+            the manager computes real shortest-path routes via Dijkstra's algorithm. Routing is self-healing: a node
+            that hasn't been seen within the liveness window, or that fails to accept a relay during a send, is
+            automatically excluded and the route recomputed around it - "no single point of failure" implemented as
+            real graph algorithms, not narrative.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web8.Core.Managers.GalacticMeshManager.LivenessWindow">
+            <summary>A node not heard from within this window is treated as down for routing purposes.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web8.Core.Managers.GalacticMeshManager.AddLinkAsync(System.Guid,System.Guid,System.Double)">
+            <summary>Declares a bidirectional weighted link between two nodes - an edge in the mesh graph.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web8.Core.Managers.GalacticMeshManager.HeartbeatAsync(System.Guid)">
+            <summary>Records a heartbeat for a node - keeps it inside the liveness window so routing continues to consider it healthy.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web8.Core.Managers.GalacticMeshManager.ComputeRouteAsync(System.Guid,System.Guid,System.Collections.Generic.IEnumerable{System.Guid})">
+            <summary>
+            Computes the shortest (lowest cumulative latency) path between two nodes via Dijkstra's algorithm,
+            excluding any node outside the liveness window or explicitly passed in excludeNodeIds (self-healing).
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web8.Core.Managers.GalacticMeshManager.SendMessageAsync(NextGenSoftware.OASIS.Web8.Core.Models.MeshMessage)">
+            <summary>
+            Routes and relays a message hop-by-hop to its destination via real HTTP forwarding. If a hop fails to
+            accept the relay, that node is excluded and the route is recomputed from the last successful hop -
+            self-healing failover in action, not merely described.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web8.Core.Managers.GalacticMeshManager.Dijkstra(System.Collections.Generic.Dictionary{System.Guid,System.Collections.Generic.Dictionary{System.Guid,System.Double}},System.Collections.Generic.HashSet{System.Guid},System.Guid,System.Guid)">
+            <summary>Standard Dijkstra shortest-path over the supplied weighted adjacency graph, restricted to the given set of healthy node ids.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web8.Core.Managers.ProtocolBridgeManager">
+            <summary>
+            Translates any external system's wire format into the unified MeshMessage envelope and back - "any
+            civilisation's communication standard is translated through the holonic abstraction layer" implemented as
+            real, deterministic format adapters rather than narrative. New formats are added by extending BridgeFormat
+            and the corresponding case here, the same extensibility pattern as AIProviderManager's provider switch.
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web8.Core.Models.GalacticNode">
+            <summary>A registered node in the WEB8 mesh - any external system that can receive a relayed MeshMessage at its EndpointUrl.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web8.Core.Models.GalacticNode.EndpointUrl">
+            <summary>The HTTP endpoint this node receives relayed mesh messages at.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web8.Core.Models.GalacticNode.IsSovereign">
+            <summary>Every node retains full sovereignty within the mesh - it can leave/be excluded from routing at any time.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web8.Core.Models.MeshLink">
+            <summary>A bidirectional link (mesh edge) between two nodes, carrying its measured latency for shortest-path routing.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web8.Core.Models.MeshMessage">
+            <summary>A message to be routed across the mesh from a source node to a destination node, multi-hop if needed.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web8.Core.Models.MeshMessage.Ttl">
+            <summary>Time-to-live - the maximum number of hops before the message is dropped (mirrors IP TTL, prevents routing loops).</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web8.Core.Models.MeshRouteResult">
+            <summary>The result of routing/relaying a MeshMessage - the computed path and per-hop relay outcomes.</summary>
+        </member>
+    </members>
+</doc>

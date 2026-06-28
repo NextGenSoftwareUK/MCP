@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NextGenSoftware.OASIS.Web7.Core</name>
+    </assembly>
+    <members>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Enums.BioSignalType">
+            <summary>
+            The non-invasive, externally-read bio-signal modalities WEB7 accepts. There is deliberately no enum value
+            for any implanted/sub-dermal/cranial signal source - the Borg-Free pledge is enforced in code, not just policy
+            (see SymbiosisSessionManager.ValidateBorgFreeCompliance).
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web7.Core.Enums.BioSignalType.EEG">
+            <summary>External EEG electrodes (e.g. Muse, OpenBCI headset) - brainwave band power.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web7.Core.Enums.BioSignalType.HRV">
+            <summary>Heart-rate variability from a chest strap or optical PPG sensor.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web7.Core.Enums.BioSignalType.GSR">
+            <summary>Galvanic skin response / electrodermal activity.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web7.Core.Enums.BioSignalType.EyeTracking">
+            <summary>Eye-tracking gaze and pupil dilation.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web7.Core.Enums.BioSignalType.VocalHarmonics">
+            <summary>Vocal harmonics / prosody analysis from voice input.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Enums.RetentionMode">
+            <summary>How long a symbiosis session's signal-derived data persists. Default is Ephemeral - reversible by design, no trace left behind.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Managers.BioSignalProcessingManager">
+            <summary>
+            Real digital signal processing for every WEB7 bio-signal modality - a radix-2 Cooley-Tukey FFT for EEG
+            band-power extraction, time-domain HRV metrics (RMSSD, SDNN) from RR-interval series, and GSR tonic/phasic
+            decomposition. This is pure, deterministic computation - it takes raw sample arrays (captured by whatever
+            external sensor/SDK the caller's device uses) and returns the processed feature set; it does not talk to
+            hardware directly, the same way AIProviderManager doesn't implement its own HTTP stack from scratch.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.BioSignalProcessingManager.ComputeEegBandPower(NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample)">
+            <summary>Computes normalised EEG band power (delta/theta/alpha/beta/gamma) for one channel's waveform via FFT.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.BioSignalProcessingManager.ComputeHrvMetrics(NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample)">
+            <summary>Computes time-domain HRV metrics (RMSSD, SDNN, mean heart rate) from a series of RR intervals (ms).</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.BioSignalProcessingManager.ComputeGsrMetrics(NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample)">
+            <summary>Decomposes a raw GSR waveform into its slow-moving tonic (skin conductance level) and fast phasic (response) components.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.BioSignalProcessingManager.FFT(System.Numerics.Complex[])">
+            <summary>Iterative, in-place radix-2 Cooley-Tukey FFT. Input length must be a power of two (callers go through PadToPowerOfTwo).</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Managers.CollectiveConsciousnessManager">
+            <summary>
+            Manages collective consciousness spaces - shared intention fields where multiple consenting symbiosis
+            sessions co-create. Only the aggregate (mean) intention state across participants is ever exposed; no
+            individual's raw signal or per-person state is shared with the group, preserving sovereignty within unity.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.CollectiveConsciousnessManager.JoinSpaceAsync(System.Guid,System.Guid)">
+            <summary>Joins a consenting symbiosis session to a space - the session's owner must already have granted consent for the session itself.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.CollectiveConsciousnessManager.GetAggregateFieldAsync(System.Guid)">
+            <summary>Recomputes the aggregate (mean) intention field across every participating session's last known state.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Managers.IntentionEngine">
+            <summary>
+            Maps processed bio-signal features (from BioSignalProcessingManager) into the human-meaningful IntentionState
+            (focus, arousal, emotional valence, cognitive load) that the rest of WEB7 reasons about. The mapping uses
+            well-established psychophysiology heuristics: EEG alpha/beta ratio for relaxed-focus, EEG theta/beta ratio
+            for cognitive load, HRV (RMSSD) and GSR phasic energy for arousal/valence.
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Managers.SymbiosisSessionManager">
+            <summary>
+            Manages the lifecycle of WEB7 symbiosis sessions. Enforces the Borg-Free pledge as code, not just policy:
+            no signal is ever processed without explicit consent, every session can be ended instantly by the human
+            with zero residue (the default retention mode is Ephemeral), and channel names are screened against
+            invasive/implant terminology as a defence-in-depth check on top of the BioSignalType enum already only
+            containing non-invasive, externally-read modalities.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.SymbiosisSessionManager.StartSessionAsync(System.Guid,System.Boolean,NextGenSoftware.OASIS.Web7.Core.Enums.RetentionMode)">
+            <summary>Starts a new symbiosis session. ConsentGranted must be explicitly true - the default is always private/disconnected.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.SymbiosisSessionManager.SubmitSignalsAsync(System.Guid,System.Collections.Generic.List{NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample})">
+            <summary>Submits a batch of raw bio-signal samples for an active, consenting session and returns the freshly computed intention state.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.SymbiosisSessionManager.EndSessionAsync(System.Guid)">
+            <summary>Ends a session instantly - if retention is Ephemeral, signal-derived data is wiped immediately, leaving no trace.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web7.Core.Managers.SymbiosisSessionManager.ValidateBorgFreeCompliance(System.Collections.Generic.List{NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample})">
+            <summary>
+            Defence-in-depth Borg-Free check: BioSignalType already only contains non-invasive modalities at the type
+            level, so this also screens free-text channel names against invasive/implant terminology in case a future
+            signal type or device profile is added without due care.
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample">
+            <summary>A single channel's raw waveform/series from an external bio-signal sensor over a time window.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample.Channel">
+            <summary>Channel name, e.g. "Fp1", "Fp2" for EEG, or "RR" for HRV inter-beat intervals.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample.SampleRateHz">
+            <summary>Sample rate in Hz (EEG/GSR/EyeTracking). Not required for HRV, which is supplied as RR intervals in ms.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.BioSignalSample.Values">
+            <summary>Raw values - EEG/GSR/EyeTracking are evenly-sampled waveforms; HRV values are RR intervals in milliseconds.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Models.CollectiveConsciousnessSpace">
+            <summary>A shared intention field where multiple consenting symbiosis sessions co-create in real time.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.CollectiveConsciousnessSpace.AggregateState">
+            <summary>The aggregate (mean) intention state across every consenting participant - never any individual's raw signal.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Models.IntentionState">
+            <summary>The processed, human-meaningful intention/cognitive state derived from raw bio-signals for one moment in time.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.IntentionState.Focus">
+            <summary>0-1, derived from EEG alpha/beta ratio - higher means more focused/attentive.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.IntentionState.EmotionalValence">
+            <summary>-1 (negative) to +1 (positive) emotional valence, derived from HRV and GSR.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.IntentionState.Arousal">
+            <summary>0-1 arousal/activation level, derived from GSR and HRV.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.IntentionState.CognitiveLoad">
+            <summary>0-1 cognitive load, derived from EEG theta/beta ratio.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.IntentionState.Features">
+            <summary>Raw computed signal features this state was derived from, keyed by feature name (e.g. "eeg_alpha_power").</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web7.Core.Models.SymbiosisSession">
+            <summary>A consent-gated WEB7 symbiosis session for one avatar - the unit of human/AI bio-resonant connection.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.SymbiosisSession.ConsentGranted">
+            <summary>Must be true before any signal is processed - the connection is always voluntary (see Borg-Free Pledge).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web7.Core.Models.SymbiosisSession.Retention">
+            <summary>How long signal-derived data is retained once the session ends. Default is ephemeral per the sovereignty principle.</summary>
+        </member>
+    </members>
+</doc>

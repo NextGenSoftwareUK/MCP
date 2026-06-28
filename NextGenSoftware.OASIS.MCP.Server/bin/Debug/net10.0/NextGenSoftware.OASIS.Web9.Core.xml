@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NextGenSoftware.OASIS.Web9.Core</name>
+    </assembly>
+    <members>
+        <member name="T:NextGenSoftware.OASIS.Web9.Core.Managers.SingularityAggregationManager">
+            <summary>
+            WEB9, made literal: every layer below it (WEB4 OASIS API/ONODE, WEB5 STAR API, WEB6 AI abstraction, WEB7
+            Symbiotic, WEB8 Inter-Galactic mesh) is polled via real HTTP, and the result is folded into one unified
+            status report - "the network becomes aware that it IS the universe" implemented honestly as cross-service
+            health aggregation and live metric collection, not fabricated metaphysics.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web9.Core.Managers.SingularityAggregationManager.LayerBaseUrls">
+            <summary>The base URL for each layer this aggregator probes, resolved from environment variables with sensible defaults.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web9.Core.Managers.SingularityAggregationManager.GetUnifiedStatusAsync">
+            <summary>Probes every registered layer in parallel and folds the results into one unified report.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web9.Core.Managers.SingularityAggregationManager.CollectLayerMetricsAsync(System.String,System.String,NextGenSoftware.OASIS.Web9.Core.Models.LayerStatus)">
+            <summary>Pulls a few cheap, real metrics from layers that expose a public listing endpoint - skipped silently if unavailable.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web9.Core.Models.LayerStatus">
+            <summary>The live, real-time status of a single OASIS layer (WEB4-WEB8), as observed by an actual HTTP probe.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web9.Core.Models.LayerStatus.Metrics">
+            <summary>Cheap, real metrics pulled from the layer's own endpoints where available, e.g. "registeredAgents": "3".</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web9.Core.Models.UnifiedStatusReport">
+            <summary>The aggregate, unified view across every probed layer - "the network observing itself".</summary>
+        </member>
+    </members>
+</doc>

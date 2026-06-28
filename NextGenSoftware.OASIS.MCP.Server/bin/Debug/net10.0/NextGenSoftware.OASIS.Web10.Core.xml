@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NextGenSoftware.OASIS.Web10.Core</name>
+    </assembly>
+    <members>
+        <member name="T:NextGenSoftware.OASIS.Web10.Core.Managers.SourceManager">
+            <summary>
+            "The Source" / WEB0 - the ground every other layer derives from and returns to. Deliberately does not expose
+            the raw OASIS_DNA configuration (which carries provider connection strings/keys); instead it returns the
+            safe, public runtime/version identity of the foundation plus WEB9's live unified status across every layer
+            built on top of it - the Alpha and the Omega, as one real endpoint.
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web10.Core.Models.SourceReport">
+            <summary>
+            "WEB10 = WEB0" made literal: the foundational runtime/version identity every layer derives from (the Alpha),
+            together with WEB9's live unified status across WEB4-WEB8 (the Omega) - returned as one report.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web10.Core.Models.SourceReport.UnifiedStatus">
+            <summary>The live aggregate status of every layer above the foundation, as reported by WEB9.</summary>
+        </member>
+    </members>
+</doc>

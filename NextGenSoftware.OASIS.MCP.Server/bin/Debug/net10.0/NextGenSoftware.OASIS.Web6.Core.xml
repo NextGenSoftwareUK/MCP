@@ -1,0 +1,434 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NextGenSoftware.OASIS.Web6.Core</name>
+    </assembly>
+    <members>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Enums.AIProviderType">
+            <summary>
+            The AI providers/model runtimes that WEB6 can route a completion request to.
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web6.Core.Enums.AIProviderType.OpenServ">
+            <summary>OpenServ SERV inference gateway - one API key (SERV_API_KEY) reaches every model in
+            the SERV catalog (OpenAI, Anthropic, Google, xAI, Qwen, DeepSeek) via an OpenAI-compatible
+            chat/completions endpoint. See https://docs.openserv.ai/serv-reasoning/sdk-integration</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Enums.DispatchMode">
+            <summary>
+            The dispatch mode used by the FAHRN (Fractal Adaptive Holonic Reasoning Network) controller agent.
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web6.Core.Enums.DispatchMode.Serial">
+            <summary>Dispatch to the single highest-scoring agent, falling over to the next best on stall/timeout. Cost optimised.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web6.Core.Enums.DispatchMode.Parallel">
+            <summary>Dispatch the same problem to every eligible agent in parallel and compare/merge their plans. Accuracy optimised.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web6.Core.Enums.DispatchMode.Decomposed">
+            <summary>Decompose the problem into sub-problems and route each to its best-fit agent, then merge the resulting plans.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Enums.HolonicMemoryLevel">
+            <summary>
+            The fractal Holonic BRAID memory hierarchy, from the atomic Session holon up to the planetary Earth holon.
+            Every level is simultaneously a whole in itself and a part of the level above it (Koestler's holon).
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Enums.OrchestratorProtocolType">
+            <summary>
+            The agent/orchestration protocols and frameworks WEB6 normalises over, so a caller can write once against
+            the WEB6 protocol and reach every agent framework without learning each one's native wire format.
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web6.Core.Enums.OrchestratorProtocolType.MCP">
+            <summary>Model Context Protocol (Anthropic) - tool/resource invocation over JSON-RPC.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web6.Core.Enums.OrchestratorProtocolType.A2A">
+            <summary>Agent2Agent protocol - cross-vendor agent-to-agent task delegation.</summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web6.Core.Enums.OrchestratorProtocolType.Webhook">
+            <summary>A generic JSON-over-HTTP webhook for any orchestrator that doesn't have a dedicated adapter yet.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Enums.RetentionPolicy">
+            <summary>How long a piece of memory is retained at a given holon before being discarded.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Managers.AIProviderManager">
+            <summary>
+            The WEB6 AI abstraction layer. Normalises completion requests/responses across every AI provider
+            (OpenAI, Anthropic, Gemini, Ollama, Groq, Mistral, OpenServ, etc.) behind a single unified interface,
+            with automatic provider selection, fail-over and cost/latency/quality-based routing.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Managers.AIProviderManager.ApiKeys">
+            <summary>API keys per provider. Defaults to reading from environment variables (e.g. OPENAI_API_KEY) if not supplied.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.AIProviderManager.CompleteAsync(NextGenSoftware.OASIS.Web6.Core.Models.CompletionRequest)">
+            <summary>
+            Routes a unified completion request to the best-fit provider (or the one explicitly requested),
+            normalising the response shape. Automatically fails over to the next provider on error if
+            request.Routing.Fallback is true.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.AIProviderManager.CallAWSBedrockAsync(NextGenSoftware.OASIS.Web6.Core.Models.CompletionRequest)">
+            <summary>
+            Calls AWS Bedrock's unified Converse API - the same call shape works across every model Bedrock hosts
+            (Anthropic Claude, Amazon Titan/Nova, Meta Llama, Mistral, etc.). Credentials are resolved via the
+            standard AWS SDK credential chain (environment variables, shared config/profile, or an IAM role) -
+            set AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY/AWS_REGION (or AWS_DEFAULT_REGION) to use this provider.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.AIProviderManager.GenerateImageAsync(NextGenSoftware.OASIS.Web6.Core.Models.ImageGenerationRequest)">
+            <summary>
+            Generates an image via the configured image-generation provider. Stability AI is fully wired (real REST
+            call to the Stable Image Generate v2beta API). OpenAI's gpt-image-1 is wired as a second option.
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager">
+            <summary>
+            FAHRN - the Fractal Adaptive Holonic Reasoning Network. The meta-orchestration controller agent that sits
+            above the reasoning network: it classifies problems, scores every registered agent via a composite score
+            (category performance, speed, cost, loop-detection stability, failure rate), dispatches work in Serial,
+            Parallel or Decomposed mode, runs loop detection, and learns from every outcome via EMA score updates that
+            are persisted as ReasoningAgent holons in the Holonic BRAID memory hierarchy.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager.EMAAlpha">
+            <summary>The smoothing factor for the Exponential Moving Average used to update agent scores after every task.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager.RegisterAgentAsync(NextGenSoftware.OASIS.Web6.Core.Models.ReasoningAgentMetadata)">
+            <summary>Registers a new reasoning agent with the network, persisted as a ReasoningAgent holon.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager.SeedDefaultOpenServAgentsAsync">
+            <summary>
+            Registers one reasoning agent per model in the OpenServ SERV catalog (skipping any AgentName already
+            registered), so FAHRN can immediately score, dispatch and braid across every OpenServ-reachable model
+            (OpenAI, Anthropic, Google, xAI, Qwen, DeepSeek) behind the single SERV_API_KEY. Safe to call repeatedly.
+            </summary>
+        </member>
+        <member name="F:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager.OpenServSeedAgents">
+            <summary>
+            Default scoring metadata for one reasoning agent per model in <see cref="F:NextGenSoftware.OASIS.Web6.Core.Models.OpenServCatalog.Models"/>.
+            Speed/cost/category scores are seeded estimates (0-1, higher is better/cheaper/faster) intended as a
+            reasonable starting point - FAHRN's EMA updates (see <see cref="M:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager.UpdateAgentScoreAsync(NextGenSoftware.OASIS.Web6.Core.Models.ReasoningAgentMetadata,System.String,NextGenSoftware.OASIS.Web6.Core.Models.AgentExecutionPlan)"/>) adjust them
+            toward real observed behaviour as dispatches complete.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager.GetRegisteredAgentsAsync">
+            <summary>Loads every agent currently registered with the network.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager.DispatchAsync(NextGenSoftware.OASIS.Web6.Core.Models.DispatchRequest)">
+            <summary>
+            The controller agent's dispatch logic: scores every eligible agent for the given task type, picks a
+            dispatch mode (Serial/Parallel/Decomposed), executes the agent(s), runs loop detection, assembles the
+            final Mermaid execution plan, persists/reuses the Holonic BRAID graph for the task type, and updates
+            every involved agent's score via EMA before returning.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.FAHRNManager.DetectLoop(System.String)">
+            <summary>
+            Loop detection: flags output-similarity (degenerate repetition) and circular DAG references in the
+            Mermaid diagram. Token-budget and self-contradictory-step detection are evaluated by the caller against
+            the raw provider response before this is called.
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicBraidManager">
+            <summary>
+            Manages the Holonic BRAID shared reasoning-graph library (whitepaper §3). The library is itself a holon
+            (HolonicBraidLibrary) - its children are individual graph holons (HolonicBraidGraph), one per task type τ.
+            Every Mermaid reasoning graph generated by any agent, for any task type, is stored once and re-used by every
+            future agent/session that hits the same task type - so PPD (performance-per-dollar) gains compound globally
+            instead of resetting per agent/instance. Graphs are saved through the OASIS COSMIC ORM, so they automatically
+            replicate/fail-over across whichever providers (MongoDB for fast access, Solana for immutable on-chain
+            provenance, IPFS for decentralised permanence, etc.) are configured for auto-replication in OASIS_DNA.json -
+            the same holon Id resolves to the same graph from any backend (ProviderUniqueStorageKey, per provider).
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicBraidManager.AccuracyRegenerationThreshold">
+            <summary>If a graph's average solver accuracy drops below this threshold, the Generator is reinvoked to produce an improved replacement.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicBraidManager.EnsureLibraryHolonAsync">
+            <summary>Gets the single shared library holon, creating it if this is the very first call anywhere.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicBraidManager.FindGraphForTaskTypeAsync(System.String)">
+            <summary>
+            The lookup-or-create entry point: finds an existing reasoning graph for the given task type in the shared
+            library. Returns null if none exists yet (the caller's generator agent should then create one and call
+            SaveGraphAsync). Every successful lookup is at zero generation cost - this is what sustains BRAID's PPD
+            gains at platform scale instead of collapsing as task volume grows (whitepaper §2.4).
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicBraidManager.SaveGraphAsync(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Stores a newly generated reasoning graph as a child of the shared library holon (called once per task type
+            by the generator agent, or to publish a new version when regenerating a degraded/conflicting graph).
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicBraidManager.RecordSolverOutcomeAsync(System.Guid,System.Boolean,System.Double)">
+            <summary>
+            Feeds a real solver outcome back into a graph's quality metadata via EMA, so the library's accuracy
+            tracking stays current (whitepaper §3.1 - "usage_count, avg_solver_accuracy" accumulate over time).
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicMemoryManager">
+            <summary>
+            Manages the Holonic BRAID fractal memory hierarchy - Session → Agent → User → Group → Neighbourhood →
+            District → City → County → Country → Continent → Earth. Every level is a holon that is simultaneously
+            a whole in itself and a part of the level above it. Membrane rules (per-field, consent-governed) decide
+            exactly what memory is allowed to propagate from a child holon up to its parent - the default is private;
+            nothing propagates without an explicit rule. This is how genuine bottom-up collective intelligence forms
+            without becoming surveillance.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicMemoryManager.GetOrCreateEarthHolonAsync">
+            <summary>Gets the single planetary Earth holon, creating it if this is the very first call anywhere.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicMemoryManager.GetOrCreateHolonAsync(NextGenSoftware.OASIS.Web6.Core.Enums.HolonicMemoryLevel,System.String,System.Guid)">
+            <summary>Finds an existing holon at the given level/name/parent, or creates a new one.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicMemoryManager.SetMembraneRuleAsync(System.Guid,NextGenSoftware.OASIS.Web6.Core.Models.MembraneRule)">
+            <summary>Sets the membrane rule that governs what this holon is allowed to propagate upward to its parent.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicMemoryManager.RecordMemoryAsync(System.Guid,NextGenSoftware.OASIS.Web6.Core.Models.HolonicMemoryItem)">
+            <summary>Records a new memory item at the given holon. Does not propagate it anywhere by itself - call PropagateAsync for that.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.HolonicMemoryManager.PropagateAsync(System.Guid)">
+            <summary>
+            Propagates whatever memory items are permitted by the child holon's membrane rule up to its parent holon
+            (a single hop - call again at the parent level to continue propagation further up the hierarchy).
+            The default is private: any field not explicitly listed in FieldsAllowedToPropagate is never propagated.
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Managers.OrchestratorManager">
+            <summary>
+            Abstracts and aggregates every agent protocol/orchestration framework (MCP, A2A, LangChain, AutoGen, CrewAI,
+            Semantic Kernel, or any generic webhook-based orchestrator) behind one unified WEB6 interface. Register an
+            external orchestrator endpoint once via RegisterAdapterAsync, then invoke it through InvokeAsync using the
+            same normalised request/response shape regardless of which protocol it actually speaks underneath - the
+            same "one API, every AI" abstraction the AIProviderManager provides for raw model providers, extended to
+            cover entire orchestration frameworks and multi-agent protocols.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.OrchestratorManager.RegisterAdapterAsync(NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorAdapterConfig)">
+            <summary>Registers an external agent/orchestrator endpoint, persisted as an OrchestratorAdapter holon.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.OrchestratorManager.GetAdaptersAsync">
+            <summary>Lists every registered orchestrator adapter.</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.OrchestratorManager.InvokeAsync(NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorInvokeRequest)">
+            <summary>
+            Invokes a registered orchestrator adapter with a normalised request, translating to/from its native
+            protocol wire format under the hood, so every caller deals with the same WEB6 shape regardless of whether
+            the adapter underneath is an MCP server, an A2A agent, a LangChain/AutoGen/CrewAI/Semantic Kernel
+            deployment, or a plain webhook.
+            </summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.OrchestratorManager.InvokeJsonWebhookAsync(NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorAdapterConfig,NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorInvokeRequest,System.String)">
+            <summary>Generic JSON-over-HTTP invocation for protocols whose wire format is a simple {fieldName, parameters} POST body (covers LangChain/AutoGen/CrewAI/Semantic Kernel/A2A REST bridges and plain webhooks).</summary>
+        </member>
+        <member name="M:NextGenSoftware.OASIS.Web6.Core.Managers.OrchestratorManager.InvokeMcpAsync(NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorAdapterConfig,NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorInvokeRequest)">
+            <summary>Invokes an MCP server's tools/call JSON-RPC method - the tool name comes from ExtraConfig["tool"].</summary>
+            <summary>
+            Performs the full MCP Streamable HTTP transport handshake - initialize, then the notifications/initialized
+            notification, then the actual tools/call - carrying the server-issued Mcp-Session-Id across all three
+            requests (per the MCP spec, a server may require this session to be established before accepting calls).
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.ChatMessage">
+            <summary>
+            A single message in a chat-style completion request, normalised across every AI provider.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ChatMessage.Role">
+            <summary>"system", "user" or "assistant".</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.CompletionRequest">
+            <summary>
+            A unified completion request - the single request shape WEB6 accepts for every AI provider.
+            POST https://api.web6.oasisomniverse.one/v1/complete
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.CompletionRequest.Provider">
+            <summary>"auto", "openai", "anthropic", "gemini", "ollama", etc. "auto" lets WEB6 pick the best provider.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.CompletionRequest.Model">
+            <summary>"auto" or a specific model id (e.g. "gpt-4o", "claude-opus-4-8").</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.CompletionRequest.AvatarId">
+            <summary>Optional OASIS avatar id - when set, the request is grounded with WEB4 identity/karma and WEB5 holon/STARNET context.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.CompletionResponse">
+            <summary>
+            The unified completion response returned for every AI provider WEB6 routes to.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.CompletionResponse.FailedOver">
+            <summary>True if WEB6 had to fail over to a different provider/model than requested.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.DispatchRequest">
+            <summary>
+            A request to the FAHRN controller agent to dispatch a problem to the reasoning network.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.DispatchRequest.TaskType">
+            <summary>Task category used for composite scoring, e.g. "mathematics", "legal", "code", "writing", "real-time".</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.DispatchRequest.EligibleAgentIds">
+            <summary>If empty, every registered agent is eligible.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.AgentExecutionPlan">
+            <summary>
+            A single agent's contribution to a dispatch (its score at dispatch time, its Mermaid execution plan and its outcome).
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.DispatchResult">
+            <summary>
+            The result of a FAHRN dispatch - the merged/selected execution plan plus every agent's contribution.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.DispatchResult.FinalMermaidPlan">
+            <summary>Final assembled Mermaid plan - selected (serial), merged (parallel) or stitched (decomposed).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.DispatchResult.HolonicBraidGraphId">
+            <summary>The id of the HolonicBraidGraph holon this plan was loaded from or saved as, for the given TaskType.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.HolonicBraidGraphDto">
+            <summary>
+            A reasoning graph in the Holonic BRAID shared library - a Mermaid execution graph generated once per
+            task type by a high-tier "generator" agent, then re-used (and executed cheaply) by every future agent/session
+            doing the same task type. Stored as a HolonicBraidGraph holon so it persists/replicates across every OASIS provider.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.HolonicBraidGraphDto.ParentHolonId">
+            <summary>The Library holon this graph holon is a child of (per whitepaper §3.1 - the library holon is itself a holon whose children are individual graph holons, one per task type).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.HolonicBraidGraphDto.AvgSolverAccuracy">
+            <summary>Average solver accuracy reported back from real outcomes (0-1). Drives accuracy-threshold regeneration.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.HolonicBraidGraphDto.Version">
+            <summary>Bumped every time a new version of this graph replaces a previous one (accuracy regeneration or conflict resolution).</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.HolonicMemoryItem">
+            <summary>A single piece of memory recorded at a holon (e.g. a session fact, a performance signal, a topic).</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.HolonicMemoryItem.Tags">
+            <summary>Tags used to evaluate membrane TriggerConditions, e.g. "topic:professional", "anonymised".</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.HolonicMemoryHolonDto">
+            <summary>A holon in the Holonic BRAID fractal memory hierarchy (Session → Agent → User → Group → ... → Earth).</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.ImageGenerationRequest">
+            <summary>A unified image-generation request - the image-modality counterpart to CompletionRequest.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ImageGenerationRequest.Provider">
+            <summary>Which image-generation provider to use. Defaults to StabilityAI.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ImageGenerationRequest.Model">
+            <summary>"auto" or a specific model id.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ImageGenerationRequest.Size">
+            <summary>OpenAI-style size, e.g. "1024x1024".</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ImageGenerationRequest.AspectRatio">
+            <summary>Stability AI-style aspect ratio, e.g. "16:9".</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.ImageGenerationResponse">
+            <summary>A unified image-generation response.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.MembraneRule">
+            <summary>
+            The governed boundary through which information passes between two holons in the Holonic BRAID hierarchy.
+            The default is private - nothing propagates without an explicit rule. Per-field granularity, matching the
+            OASIS WEB4 field-level data control system.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.MembraneRule.FieldsAllowedToPropagate">
+            <summary>The field/topic/knowledge-category names from the child holon that are allowed to flow upward to the parent.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.MembraneRule.Retention">
+            <summary>How long the propagated memory is retained at the parent holon.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.MembraneRule.WhoCanRead">
+            <summary>Holon ids (parents, siblings or external agents) explicitly permitted to query/read this holon's propagated memory. Read access is separate from propagation.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.MembraneRule.TriggerCondition">
+            <summary>
+            Optional conditional trigger, e.g. "topic=professional" or "anonymised-aggregate-only". Evaluated against
+            the memory item's own tags before it is allowed to propagate - if empty, the rule applies unconditionally.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.MembraneRule.AnonymisedAggregateOnly">
+            <summary>True if only anonymised/aggregate patterns (not raw content) may propagate under this rule.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.OpenServModel">
+            <summary>One model entry in the OpenServ SERV inference catalog.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.OpenServCatalog">
+            <summary>
+            The SERV catalog reachable through OpenServ's OpenAI-compatible chat/completions endpoint with a
+            single SERV_API_KEY - spans every underlying provider (OpenAI, Anthropic, Google, xAI, Qwen, DeepSeek).
+            Kept in sync with the OASIS IDE's OPENSERV_MODELS list (src/main/services/OpenServAgentService.ts).
+            See https://docs.openserv.ai/serv-reasoning/sdk-integration and https://docs.openserv.ai/serv-reasoning/models
+            </summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorAdapterConfig">
+            <summary>
+            A registered external agent/orchestrator endpoint (an MCP server, an A2A agent, a LangChain/AutoGen/CrewAI/
+            Semantic Kernel deployment, or any generic webhook) that WEB6 will normalise traffic to/from.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorAdapterConfig.EndpointUrl">
+            <summary>The base URL of the external orchestrator/agent endpoint.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorAdapterConfig.AuthToken">
+            <summary>Optional bearer token / API key for the external endpoint.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorAdapterConfig.ExtraConfig">
+            <summary>Arbitrary extra headers/config the specific protocol adapter needs (e.g. MCP tool name).</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorInvokeRequest">
+            <summary>A normalised request sent through an orchestrator adapter - the same CompletionRequest shape used by every other AI provider.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.OrchestratorInvokeResponse">
+            <summary>A normalised response from an orchestrator adapter, regardless of the underlying protocol's native wire format.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.ReasoningAgentMetadata">
+            <summary>
+            The continuously-updated scoring metadata for a single reasoning agent registered with FAHRN
+            (the Fractal Adaptive Holonic Reasoning Network controller). Persisted as a ReasoningAgent holon.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ReasoningAgentMetadata.CategoryScores">
+            <summary>Per-category score (0-1), e.g. "mathematics", "legal", "architecture", "code", "writing", "real-time".</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ReasoningAgentMetadata.SpeedScore">
+            <summary>0-1, higher is faster.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ReasoningAgentMetadata.CostScore">
+            <summary>0-1, higher is cheaper.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ReasoningAgentMetadata.LoopDetectionScore">
+            <summary>0-1, higher is more stable / less prone to looping.</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.ReasoningAgentMetadata.FailureRate">
+            <summary>0-1, fraction of recent tasks this agent has failed/stalled on.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.RoutingOptions">
+            <summary>
+            Routing preferences for a WEB6 completion request.
+            </summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.RoutingOptions.Priority">
+            <summary>"cost", "latency" or "quality".</summary>
+        </member>
+        <member name="P:NextGenSoftware.OASIS.Web6.Core.Models.RoutingOptions.Fallback">
+            <summary>Whether to automatically fail over to the next-best provider if the chosen one errors/times out.</summary>
+        </member>
+        <member name="T:NextGenSoftware.OASIS.Web6.Core.Models.ScoringWeights">
+            <summary>
+            The composite routing score weights for a given dispatch mode.
+            CompositeScore = (Wcat * CategoryScore) + (Wspeed * SpeedScore) + (Wcost * CostScore)
+                             - (Wpenalty * FailureRate) - (LoopPenalty if recently stalled)
+            </summary>
+        </member>
+    </members>
+</doc>
