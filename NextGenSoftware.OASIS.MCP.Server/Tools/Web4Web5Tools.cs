@@ -35,6 +35,29 @@ namespace NextGenSoftware.OASIS.MCP.Server.Tools
             return await ForwardRequestAsync(Web5BaseUrl, httpMethod, path, queryString, bodyJson, bearerToken);
         }
 
+        // ── Priority 6: web7/8/9/10 HTTP passthrough tools ──────────────────────────
+
+        private static string Web7BaseUrl  => Environment.GetEnvironmentVariable("WEB7_API_BASE_URL")  ?? "https://api.web7.oasisomniverse.one";
+        private static string Web8BaseUrl  => Environment.GetEnvironmentVariable("WEB8_API_BASE_URL")  ?? "https://api.web8.oasisomniverse.one";
+        private static string Web9BaseUrl  => Environment.GetEnvironmentVariable("WEB9_API_BASE_URL")  ?? "https://api.web9.oasisomniverse.one";
+        private static string Web10BaseUrl => Environment.GetEnvironmentVariable("WEB10_API_BASE_URL") ?? "https://api.web10.oasisomniverse.one";
+
+        [McpServerTool(Name = "web7_request"), Description("WEB7 (Symbiosis): calls any endpoint of the full WEB7 REST API (symbiosis sessions, bio-signal submission, collective consciousness spaces — see https://api.web7.oasisomniverse.one/swagger). path starts with /v1/...")]
+        public static async Task<string> Web7Request(string httpMethod, string path, string? queryString = null, string? bodyJson = null, string? bearerToken = null)
+            => await ForwardRequestAsync(Web7BaseUrl, httpMethod, path, queryString, bodyJson, bearerToken);
+
+        [McpServerTool(Name = "web8_request"), Description("WEB8 (Galactic Mesh): calls any endpoint of the full WEB8 REST API (node registration, heartbeats, Dijkstra routing, message relay, protocol bridge — see https://api.web8.oasisomniverse.one/swagger). path starts with /v1/...")]
+        public static async Task<string> Web8Request(string httpMethod, string path, string? queryString = null, string? bodyJson = null, string? bearerToken = null)
+            => await ForwardRequestAsync(Web8BaseUrl, httpMethod, path, queryString, bodyJson, bearerToken);
+
+        [McpServerTool(Name = "web9_request"), Description("WEB9 (Singularity): calls any endpoint of the full WEB9 REST API (unified health aggregation across Web4-Web8 — see https://api.web9.oasisomniverse.one/swagger). path starts with /v1/...")]
+        public static async Task<string> Web9Request(string httpMethod, string path, string? queryString = null, string? bodyJson = null, string? bearerToken = null)
+            => await ForwardRequestAsync(Web9BaseUrl, httpMethod, path, queryString, bodyJson, bearerToken);
+
+        [McpServerTool(Name = "web10_request"), Description("WEB10 (The Source): calls any endpoint of the full WEB10 REST API (root OASIS identity and Web9 unified status — see https://api.web10.oasisomniverse.one/swagger). path starts with /v1/...")]
+        public static async Task<string> Web10Request(string httpMethod, string path, string? queryString = null, string? bodyJson = null, string? bearerToken = null)
+            => await ForwardRequestAsync(Web10BaseUrl, httpMethod, path, queryString, bodyJson, bearerToken);
+
         private static async Task<string> ForwardRequestAsync(string baseUrl, string httpMethod, string path, string? queryString, string? bodyJson, string? bearerToken)
         {
             string url = $"{baseUrl.TrimEnd('/')}{(path.StartsWith('/') ? path : "/" + path)}";

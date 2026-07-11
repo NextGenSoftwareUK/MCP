@@ -14,13 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\OASIS Architecture\NextGenSoftware.OASIS.API.DNA\NextGenSoftware.OASIS.API.DNA.csproj" />
-    <ProjectReference Include="..\..\OASIS Architecture\NextGenSoftware.OASIS.OASISBootLoader\NextGenSoftware.OASIS.OASISBootLoader.csproj" />
-    <ProjectReference Include="..\..\WEB6\NextGenSoftware.OASIS.Web6.Core\NextGenSoftware.OASIS.Web6.Core.csproj" />
-    <ProjectReference Include="..\..\WEB7\NextGenSoftware.OASIS.Web7.Core\NextGenSoftware.OASIS.Web7.Core.csproj" />
-    <ProjectReference Include="..\..\WEB8\NextGenSoftware.OASIS.Web8.Core\NextGenSoftware.OASIS.Web8.Core.csproj" />
-    <ProjectReference Include="..\..\WEB9\NextGenSoftware.OASIS.Web9.Core\NextGenSoftware.OASIS.Web9.Core.csproj" />
-    <ProjectReference Include="..\..\WEB10\NextGenSoftware.OASIS.Web10.Core\NextGenSoftware.OASIS.Web10.Core.csproj" />
+    <ProjectReference Include="..\..\OASIS2\OASIS Architecture\NextGenSoftware.OASIS.API.DNA\NextGenSoftware.OASIS.API.DNA.csproj" />
+    <ProjectReference Include="..\..\OASIS2\OASIS Architecture\NextGenSoftware.OASIS.OASISBootLoader\NextGenSoftware.OASIS.OASISBootLoader.csproj" />
+    <ProjectReference Include="..\..\OASIS2\WEB6\NextGenSoftware.OASIS.Web6.Core\NextGenSoftware.OASIS.Web6.Core.csproj" />
+    <ProjectReference Include="..\..\OASIS2\WEB7\NextGenSoftware.OASIS.Web7.Core\NextGenSoftware.OASIS.Web7.Core.csproj" />
+    <ProjectReference Include="..\..\OASIS2\WEB8\NextGenSoftware.OASIS.Web8.Core\NextGenSoftware.OASIS.Web8.Core.csproj" />
+    <ProjectReference Include="..\..\OASIS2\WEB9\NextGenSoftware.OASIS.Web9.Core\NextGenSoftware.OASIS.Web9.Core.csproj" />
+    <ProjectReference Include="..\..\OASIS2\WEB10\NextGenSoftware.OASIS.Web10.Core\NextGenSoftware.OASIS.Web10.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Text.Json;
 using ModelContextProtocol.Server;
@@ -157,6 +158,38 @@ namespace NextGenSoftware.OASIS.MCP.Server.Tools
         {
             OrchestratorManager manager = new OrchestratorManager(ParseAvatarId(avatarId));
             var result = await manager.InvokeAsync(request);
+            return JsonSerializer.Serialize(result);
+        }
+
+        // ── Priority 2: FAHRN hero endpoint ─────────────────────────────────────────
+
+        [McpServerTool(Name = "web6_fahrn_solve"), Description("WEB6 FAHRN hero endpoint: takes a natural-language problem and runs the full pipeline — auto-classify task type, inject avatar context (Web4+Web5), look up Holonic BRAID graph, dispatch to the reasoning network (Serial/Parallel/Decomposed/Debate/Voting), EMA-update agent scores, record session memory — returning the answer, reasoning trace, Mermaid plan, and full telemetry in one call.")]
+        public static async Task<string> FahrnSolve(FahrnSolveRequest request, string? avatarId = null)
+        {
+            request.AvatarId = request.AvatarId == Guid.Empty ? ParseAvatarId(avatarId) : request.AvatarId;
+            FahrnSolveManager manager = new FahrnSolveManager(request.AvatarId);
+            var result = await manager.SolveAsync(request);
+            return JsonSerializer.Serialize(result);
+        }
+
+        // ── Priority 7: Embeddings ───────────────────────────────────────────────────
+
+        [McpServerTool(Name = "web6_embed"), Description("WEB6: generates embeddings for one or more texts via the configured provider (OpenAI, Cohere, or HuggingFace). Returns float arrays suitable for semantic search, RAG pipelines, or cosine-similarity comparisons.")]
+        public static async Task<string> Embed(EmbeddingRequest request, string? avatarId = null)
+        {
+            EmbeddingManager manager = new EmbeddingManager(ParseAvatarId(avatarId));
+            var result = await manager.EmbedAsync(request);
+            return JsonSerializer.Serialize(result);
+        }
+
+        // ── Priority 23b: StarnetContextManager ─────────────────────────────────────
+
+        [McpServerTool(Name = "web6_get_avatar_context"), Description("WEB6: assembles and returns a rich context block for an OASIS avatar — karma, karma level, active quests, world memberships — assembled from Web4 and Web5 in parallel. Use this to ground AI prompts in the avatar's real OASIS state.")]
+        public static async Task<string> GetAvatarContext(string avatarId)
+        {
+            Guid id = ParseAvatarId(avatarId);
+            StarnetContextManager manager = new StarnetContextManager(id);
+            var result = await manager.GetAvatarContextAsync(id);
             return JsonSerializer.Serialize(result);
         }
     }
