@@ -1,5 +1,8 @@
 # NextGenSoftware.OASIS.MCP.Server
 
+> **This repo is archived.** The MCP Server has moved into the main OASIS2 repository alongside the WEB6 projects it depends on:
+> **https://github.com/NextGenSoftwareUK/OASIS/tree/master/WEB6/NextGenSoftware.OASIS.MCP.Server**
+
 A native C# MCP (Model Context Protocol) server covering the entire OASIS stack, WEB4 through WEB10. Built on the
 official `ModelContextProtocol` C# SDK, communicating over stdio.
 
